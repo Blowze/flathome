@@ -76,7 +76,7 @@ export default {
 $base-color: var(--tg-theme-bg-color);
 .vs__search {
   padding: 0 16px;
-  height: 44px;
+  height: 42px;
   width: 100%;
   border-radius: 4px;
   border: 1px solid #c9c9c9;
@@ -90,8 +90,8 @@ $base-color: var(--tg-theme-bg-color);
   position: absolute;
       top: 0;
     right: 0;
-    width: 44px;
-    height: 100%;
+    width: 42px;
+    height: 42px;
   svg {
     fill: #3c3c3c80;
   }
