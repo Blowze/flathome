@@ -16,8 +16,10 @@
 }
 html {
   height: var(--tg-viewport-stable-height);
+  overflow: hidden;
 }
 body {
   height: 100%;
+  overflow: hidden;
 }
 </style>
