@@ -105,18 +105,21 @@ export default {
 }
 
 .vs__dropdown-menu {
-
+  position: relative;
     margin: 0;
     padding: 0;
     list-style: none;
     margin: 0 -16px;
-        height: calc(100vh - 80px);
-        overflow: auto;
-        scroll-behavior: smooth;
 }
 .vs__dropdown-toggle {
-  position: relative;
+      position: sticky;
+    top: 0;
+    z-index: 1000;
+  padding-bottom: 16px;
+    background: var(--tg-theme-hint-color);
+    
 }
+
 .vs__dropdown-option {
     display: block;
     padding: 14px 16px;
@@ -158,7 +161,6 @@ export default {
 
 .vs__selected-options {
   position: relative;
-  margin-bottom: 16px;
 }
 
 </style>
