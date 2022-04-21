@@ -1,13 +1,11 @@
 <template>
   <div class="home">
-    <div class="header">
-        Введите регион или город
-    </div>
+
     <div class="container">
       <div class="form">
        
         <div class="form__body">
-            <v-select class="input" :options="options"
+            <v-select class="input" :options="options"   :dropdown-should-open="dropdownShouldOpen"
                              placeholder="Поиск ">
                                 </v-select>
         </div>
@@ -31,22 +29,17 @@ export default {
     ]
             }
         },
-  components: {
-  }
+
+   methods: {
+    dropdownShouldOpen(VueSelect) {
+      console.log()
+      return  VueSelect.open = true
+    },
+  },
 }
 </script>
 <style lang="scss">
-.header {
-    padding: 12px 16px;
-    height: 54px;
-    border-bottom: 1px solid #e8e9ec36;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--tg-theme-text-color);
-    width: 100%;
-}
+
 .container {
   padding: 24px 16px 16px;
   width: 100%;
@@ -57,6 +50,7 @@ export default {
 
 .v-select {
   position: relative;
+
 }
 .vs__search {
   padding: 0 16px;
@@ -84,22 +78,16 @@ export default {
 }
 
 .vs__dropdown-menu {
-    position: absolute;
-    right: 0;
-    left: 0;
-    background: #fff;
-  border: 1px solid #c9c9c9;
 
     margin: 0;
     padding: 0;
     list-style: none;
-        border-radius: 4px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    margin-top: -1px;
 }
 .vs__dropdown-option {
-    padding: 16px;
+    display: block;
+    padding: 14px 0;
+    color: var(--tg-theme-text-color);
+    text-decoration: none;
 }
 .vs__selected {
   position: absolute;
@@ -108,10 +96,7 @@ export default {
   left: 16px;
   color: #152242;
 }
-.vs--open .vs__search {
-  border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
+
 .vs__open-indicator {
   display: none;
 }
@@ -128,4 +113,10 @@ export default {
     color: #a1a7b3;
     font-size: 14px;
 }
+
+.vs__selected-options {
+  position: relative;
+  margin-bottom: 16px;
+}
+
 </style>
