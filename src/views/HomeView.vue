@@ -20,7 +20,7 @@ export default {
     // геттер вычисляемого значения
     userName: function () {
       // `this` указывает на экземпляр vm
-      return   window.Telegram.WebApp.user;
+      return   window.Telegram.WebApp.initData;
     }
   },
   mounted() {
