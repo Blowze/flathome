@@ -1,6 +1,6 @@
 <template>
   <div class="app-loader">
-
+      првиет {{ userName }}
   </div>
   <div class="home">
   <div class="home__button" @click="getWindowWidth">sdf</div>
@@ -16,15 +16,16 @@ export default {
         return window.Telegram.WebApp.expand();
       },
   },
+  computed: {
+    // геттер вычисляемого значения
+    userName: function () {
+      // `this` указывает на экземпляр vm
+      return  window.Telegram.WebAppUser.first_name;
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
-div {
-  height: 150px;
-  width: 150px;
-  margin-bottom: 20px;
-  background: #ccc;
-}
 
 .home {
   padding: 0 16px;
