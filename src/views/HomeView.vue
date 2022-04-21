@@ -111,13 +111,12 @@ $base-color: var(--tg-theme-bg-color);
     padding: 0;
     list-style: none;
     margin: 0 -16px;
+    height: calc(100vh - 58px);
+    overflow: auto;
 }
 .vs__dropdown-toggle {
-      position: sticky;
-    top: 0;
-    z-index: 1000;
   padding-bottom: 16px;
-    background: var(--tg-theme-hint-color);
+    background: var(--tg-theme-bg-color);
     
 }
 
