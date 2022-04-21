@@ -3,18 +3,18 @@
 
   </div>
   <div class="home">
-  <div class="home__button" @click="window.Telegram.WebApp.expand()">sdf</div>
+  <div class="home__button" @click="getWindowWidth">sdf</div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HomeView',
+
    methods: {
-    dropdownShouldOpen(VueSelect) {
-      console.log()
-      return  VueSelect.open = true
-    },
+    getWindowWidth() {
+        return window.Telegram.WebApp.expand();
+      },
   },
 }
 </script>
