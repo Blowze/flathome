@@ -81,6 +81,10 @@ export default {
   border: 1px solid #c9c9c9;
   outline: none;
 }
+.vs__search:focus {
+    z-index: 1000;
+    position: relative;
+}
 .vs__actions {
   position: absolute;
       top: 0;
