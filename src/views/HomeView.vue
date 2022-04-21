@@ -20,10 +20,11 @@ export default {
     // геттер вычисляемого значения
     userName: function () {
       // `this` указывает на экземпляр vm
-      return  window.Telegram.WebApp.expand();
+      return   window.Telegram.WebApp.user;
     }
   },
   mounted() {
+    console.log(  window.Telegram.WebApp.user)
     window.Telegram.WebApp.MainButton.setParams({
       text: 'Давайте начнем',
       is_active:true,
