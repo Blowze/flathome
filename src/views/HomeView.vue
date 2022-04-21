@@ -1,10 +1,11 @@
 <template>
   <div class="home">
+    <div class="header">
+        Введите регион или город
+    </div>
     <div class="container">
       <div class="form">
-        <div class="form__label">
-          Выберете город
-        </div>
+       
         <div class="form__body">
             <v-select class="input" :options="options"
                              placeholder="Поиск ">
@@ -35,23 +36,25 @@ export default {
 }
 </script>
 <style lang="scss">
+.header {
+    padding: 12px 16px;
+    height: 54px;
+    border-bottom: 1px solid #e8e9ec36;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--tg-theme-text-color);
+    width: 100%;
+}
 .container {
-  padding: 0 32px;
+  padding: 24px 16px 16px;
   width: 100%;
 }
 .home {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
 
-}
-.form {
-  &__label {
-    color: #fff;
-    margin-bottom: 12px;
-  }
-}
 .v-select {
   position: relative;
 }

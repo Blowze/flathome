@@ -11,7 +11,7 @@
 @import "~assets/scss/config";
 #app {
  font-family: 'Montserrat', sans-serif;
- background: var(--color-primary);
+ background: var(--tg-theme-bg-color);
  height: 100%;
 }
 html {
