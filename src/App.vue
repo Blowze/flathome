@@ -12,12 +12,6 @@
 #app {
  font-family: 'Montserrat', sans-serif;
  background: var(--tg-theme-bg-color);
- height: 100%;
 }
-html {
-  height: var(--tg-viewport-stable-height);
-}
-body {
-  height: 100%;
-}
+
 </style>

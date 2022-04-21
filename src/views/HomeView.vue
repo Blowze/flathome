@@ -73,6 +73,7 @@ export default {
   position: relative;
 
 }
+$base-color: var(--tg-theme-bg-color);
 .vs__search {
   padding: 0 16px;
   height: 44px;
