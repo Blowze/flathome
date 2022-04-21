@@ -25,6 +25,26 @@ export default {
                     options: [
       'Москва',
       'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
+      'Нижний Новгород',
       'Казань'
     ]
             }
@@ -42,6 +62,7 @@ export default {
 
 .container {
   padding: 24px 16px 16px;
+  padding-top: 0;
   width: 100%;
 }
 .home {
@@ -75,6 +96,8 @@ export default {
     height: 100%;
     background: none;
     border: none;
+    display: block !important;
+    cursor: pointer;
 }
 
 .vs__dropdown-menu {
@@ -82,12 +105,27 @@ export default {
     margin: 0;
     padding: 0;
     list-style: none;
+    margin: 0 -16px;
+        height: calc(100vh - 80px);
+        overflow: auto;
+        scroll-behavior: smooth;
+}
+.vs__dropdown-toggle {
+  position: relative;
 }
 .vs__dropdown-option {
     display: block;
-    padding: 14px 0;
+    padding: 14px 16px;
     color: var(--tg-theme-text-color);
     text-decoration: none;
+    cursor: pointer;
+}
+.vs__dropdown-option:active,
+.vs__dropdown-option:hover {
+  background: var(--tg-theme-hint-color);
+}
+.vs__dropdown-option--selected {
+  background: var(--tg-theme-hint-color);
 }
 .vs__selected {
   position: absolute;
