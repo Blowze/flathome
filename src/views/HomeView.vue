@@ -95,12 +95,8 @@ export default {
     align-items: center;
     text-align: left;
     cursor: pointer;
-    box-shadow: none !important;
-    outline: none !important;
     touch-action: manipulation;
-    user-select: none;
     border: none;
-    -webkit-tap-highlight-color: transparent;
 
     &.active {
         background: var(--tg-theme-button-color) !important;
