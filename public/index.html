@@ -11,7 +11,6 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="stylesheet" href="style.css"></head>
-    <script async="" src="material-touch/js/md.min.js"></script>
   </head>
   <body>
     <noscript>
@@ -23,21 +22,6 @@
   <script>
     var body = document.querySelector('body')
 body.classList.add(   window.Telegram.WebApp.colorScheme);
-window.onload = function() {
-new materialTouch(".md-ripple", {
-                classes: {
-                    rippleContainer: "md-ripple-wrapper",
-                    ripple: "md-ripple-effect",
-                },
-                transition: {
-                    easing: "easeOutExpo",
-                    delay: 0,
-                    duration: 1000,
-                },
-                opacity: 0.1,
-                size: 0.55,
-                center: false,
-            });
-        }
+
   </script>
 </html>

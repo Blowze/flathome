@@ -16,14 +16,14 @@
             <template v-if="city.length === 0">
                 <div class="noFound">Ничего не найдено</div>
             </template>
-            <div
+            <button
                 v-for="item in city"
                 :key="'city-' + item"
-                class="item md-ripple"
-                :data-active="item.isActive"
+                class="item ripple ripple-js"
                 :class="{ active: isActive(item.id) }"
-                @touchstart.prevent="setActive(item)"
-                @click.prevent="setActive(item)"
+                data-ripple-color="#FFF"
+                @touchstart="setActive(item)"
+                @click="setActive(item), animateButton($event)"
                 @mousedown="setActive(item)"
             >
                 <div class="avatar">
@@ -33,7 +33,7 @@
                     <div class="title">{{ item.name }}</div>
                     <div class="status">{{ item.count }}</div>
                 </div>
-            </div>
+            </button>
         </div>
     </div>
 </template>
@@ -53,9 +53,15 @@ export default {
             return this.$store.state.cityCurrent[0];
         },
         city() {
-            return this.$store.state.city.filter(
-                (item) => item.name.indexOf(this.search) !== -1
-            );
+            if (this.search) {
+                return this.$store.state.city.filter((item) =>
+                    this.search
+                        .toLowerCase()
+                        .split(" ")
+                        .every((v) => item.name.toLowerCase().includes(v))
+                );
+            }
+            return this.$store.state.city;
         },
     },
     methods: {
@@ -70,26 +76,51 @@ export default {
                 is_visible: true,
             });
         },
+        animateButton(e) {
+            const ripple = document.createElement("span");
+            const rippleOffset = e.target.getBoundingClientRect();
+
+            const rippleY = e.pageY - rippleOffset.top;
+            const rippleX = e.pageX - rippleOffset.left;
+
+            // eslint-disable-next-line no-sequences
+            (ripple.style.top = `${rippleY}px`),
+                (ripple.style.left = `${rippleX}px`),
+                (ripple.style.background =
+                    e.target.getAttribute("data-ripple-color"));
+
+            e.target.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.parentNode.removeChild(ripple);
+            }, 450);
+        },
     },
 };
 </script>
 <style lang="scss" >
-.md-ripple {
+.ripple {
     overflow: hidden;
     position: relative;
-}
-.md-ripple * {
-    pointer-events: none;
-}
-.md-ripple-effect {
-    pointer-events: none;
-    position: absolute;
-    display: block;
-    background: #000;
-    width: 0;
-    height: 0;
-    border-radius: 100%;
     z-index: 1;
+    span {
+        animation: ink 0.5s;
+        border-radius: 100%;
+        background: #ffffff;
+        height: 12px;
+        position: absolute;
+        width: 12px;
+    }
+}
+@keyframes ink {
+    0% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40);
+    }
 }
 .noFound {
     color: var(--tg-theme-hint-color);
@@ -113,6 +144,8 @@ export default {
     cursor: pointer;
     touch-action: manipulation;
     border: none;
+    background: transparent;
+    width: 100%;
 
     &.active {
         background: var(--tg-theme-button-color) !important;

@@ -6455,6 +6455,11 @@
     "core-js" "2"
     "vue" "^3.1.0"
 
+"vue-material-button@^1.1.0":
+  "integrity" "sha1-YzSrQf4Bn2QnEMX5lpMHiii0FkM="
+  "resolved" "https://registry.npmjs.org/vue-material-button/-/vue-material-button-1.1.0.tgz"
+  "version" "1.1.0"
+
 "vue-router@^4.0.14":
   "integrity" "sha512-wAO6zF9zxA3u+7AkMPqw9LjoUCjSxfFvINQj3E/DceTt6uEz1XZLraDhdg2EYmvVwTBSGlLYsUw8bDmx0754Mw=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.0.14.tgz"
