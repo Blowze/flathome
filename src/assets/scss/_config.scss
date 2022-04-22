@@ -1,3 +1,14 @@
 :root {
     --color-primary: #0D6EFD;
+    --color-text-secondary-rgb: 112,117,121;
+
+}
+.dark {
+    --color-background: rgb(44,44,44);
+    --item-hover-bg: #2c2c2c;
+}
+
+.light {
+    --color-background: rgb(244,244,245);
+    --item-hover-bg: #f4f4f5;
 }
