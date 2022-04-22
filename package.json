@@ -11,6 +11,7 @@
     "core-js": "^3.8.3",
     "eslint-plugin-prettier-vue": "^3.1.0",
     "vue": "^3.2.13",
+    "vue-instantsearch": "^4.3.3",
     "vue-loading-skeleton": "^2.0.0-beta.1",
     "vue-router": "^4.0.14",
     "vue-select": "^4.0.0-beta.3",

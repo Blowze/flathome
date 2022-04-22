@@ -20,9 +20,10 @@
                 v-for="(item, index) in city"
                 :key="'city-' + item"
                 class="item"
-                :class="{ active: isActive(index) }"
+                :data-active="item.isActive"
+                :class="{ active: isActive(item.id) }"
                 @touchstart="setActive(index)"
-                @click.prevent="setActive(index)"
+                @click.prevent="setActive(item)"
             >
                 <div class="avatar">
                     <img :src="item.image" alt="" />
@@ -48,8 +49,7 @@ export default {
     computed: {
         // геттер вычисляемого значения
         userName() {
-            // `this` указывает на экземпляр vm
-            return window.Telegram.WebApp.initDataUnsafe.user;
+            return this.$store.state.cityCurrent[0];
         },
         city() {
             return this.$store.state.city.filter(
@@ -58,19 +58,11 @@ export default {
         },
     },
     methods: {
-        isActive(menuItem) {
-            return this.activeItem === menuItem;
+        isActive(id) {
+            return this.$store.state.cityCurrent.id === id;
         },
-        submitSearch() {
-            this.activeItem = false;
-            window.Telegram.WebApp.MainButton.setParams({
-                text: "Выбрать город",
-                is_active: false,
-                is_visible: false,
-            });
-        },
-        setActive(menuItem) {
-            this.activeItem = menuItem;
+        setActive(item) {
+            this.$store.commit("setCurentCity", item);
             window.Telegram.WebApp.MainButton.setParams({
                 text: "Выбрать город",
                 is_active: true,
