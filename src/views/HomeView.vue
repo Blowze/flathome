@@ -3,15 +3,19 @@
         <div class="form">
             <div class="form__input">
                 <input
-                    v-model="message"
+                    v-model="search"
                     type="text"
                     class="input"
                     placeholder="Поиск города"
+                    @keyup="submitSearch"
                 />
                 <i class="input__icon icon-search"></i>
             </div>
         </div>
         <div class="form__body">
+            <template v-if="city.length === 0">
+                <div class="noFound">Ничего не найдено</div>
+            </template>
             <div
                 v-for="(item, index) in city"
                 :key="'city-' + item"
@@ -38,20 +42,7 @@ export default {
     data() {
         return {
             activeItem: false,
-            city: [
-                {
-                    name: "Москва",
-                    image: "https://i.pinimg.com/originals/e8/97/68/e89768eb0617f7befeb48736bce12671.png",
-                    count: "13 Новостроек",
-                    isActive: false,
-                },
-                {
-                    name: "Нижний Новгород",
-                    image: "https://newsnn.ru/attachments/5850fe322b2c98f3e28e68bd9f9a38ee56c4b3e1/store/fill/1200/630/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad.jpg",
-                    count: "127 Новостроек",
-                    isActive: false,
-                },
-            ],
+            search: "",
         };
     },
     computed: {
@@ -60,13 +51,25 @@ export default {
             // `this` указывает на экземпляр vm
             return window.Telegram.WebApp.initDataUnsafe.user;
         },
+        city() {
+            return this.$store.state.city.filter(
+                (item) => item.name.indexOf(this.search) !== -1
+            );
+        },
     },
     methods: {
         isActive(menuItem) {
             return this.activeItem === menuItem;
         },
+        submitSearch() {
+            this.activeItem = false;
+            window.Telegram.WebApp.MainButton.setParams({
+                text: "Выбрать город",
+                is_active: false,
+                is_visible: false,
+            });
+        },
         setActive(menuItem) {
-            console.log("red");
             this.activeItem = menuItem;
             window.Telegram.WebApp.MainButton.setParams({
                 text: "Выбрать город",
@@ -78,6 +81,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.noFound {
+    color: var(--tg-theme-hint-color);
+}
 .title {
     font-weight: bold;
     color: var(--tg-theme-text-color);
