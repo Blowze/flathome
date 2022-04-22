@@ -17,6 +17,7 @@
                 :key="'city-' + item"
                 class="item"
                 :class="{ active: isActive(index) }"
+                @touchstart="setActive(index)"
                 @click.prevent="setActive(index)"
             >
                 <div class="avatar">
@@ -65,6 +66,7 @@ export default {
             return this.activeItem === menuItem;
         },
         setActive(menuItem) {
+            console.log("red");
             this.activeItem = menuItem;
             window.Telegram.WebApp.MainButton.setParams({
                 text: "Выбрать город",
@@ -93,16 +95,19 @@ export default {
     align-items: center;
     text-align: left;
     cursor: pointer;
-    transition: all 0.15s ease;
+    box-shadow: none !important;
+    outline: none !important;
+    touch-action: manipulation;
+    user-select: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+
     &.active {
-        background: var(--tg-theme-link-color) !important;
+        background: var(--tg-theme-button-color) !important;
         .title,
         .status {
             color: #fff;
         }
-    }
-    &:hover {
-        background: var(--item-hover-bg);
     }
 }
 .avatar {
