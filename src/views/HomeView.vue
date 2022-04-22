@@ -12,28 +12,19 @@
             </div>
         </div>
         <div class="form__body">
-            <div class="item">
+            <div
+                v-for="(item, index) in city"
+                :key="'city-' + item"
+                class="item"
+                :class="{ active: isActive(index) }"
+                @click.prevent="setActive(index)"
+            >
                 <div class="avatar">
-                    <img
-                        src="https://i.pinimg.com/originals/e8/97/68/e89768eb0617f7befeb48736bce12671.png"
-                        alt=""
-                    />
+                    <img :src="item.image" alt="" />
                 </div>
                 <div class="info">
-                    <div class="title">Москва</div>
-                    <div class="status">13 Новостроек</div>
-                </div>
-            </div>
-             <div class="item">
-                <div class="avatar">
-                    <img
-                        src="https://newsnn.ru/attachments/5850fe322b2c98f3e28e68bd9f9a38ee56c4b3e1/store/fill/1200/630/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad.jpg"
-                        alt=""
-                    />
-                </div>
-                <div class="info">
-                    <div class="title">Нижний Новгород</div>
-                    <div class="status">126 Новостроек</div>
+                    <div class="title">{{ item.name }}</div>
+                    <div class="status">{{ item.count }}</div>
                 </div>
             </div>
         </div>
@@ -45,7 +36,21 @@ export default {
     name: "HomeView",
     data() {
         return {
-            message: "",
+            activeItem: false,
+            city: [
+                {
+                    name: "Москва",
+                    image: "https://i.pinimg.com/originals/e8/97/68/e89768eb0617f7befeb48736bce12671.png",
+                    count: "13 Новостроек",
+                    isActive: false,
+                },
+                {
+                    name: "Нижний Новгород",
+                    image: "https://newsnn.ru/attachments/5850fe322b2c98f3e28e68bd9f9a38ee56c4b3e1/store/fill/1200/630/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad.jpg",
+                    count: "127 Новостроек",
+                    isActive: false,
+                },
+            ],
         };
     },
     computed: {
@@ -55,17 +60,17 @@ export default {
             return window.Telegram.WebApp.initDataUnsafe.user;
         },
     },
-    mounted() {
-        window.Telegram.WebApp.MainButton.setParams({
-            text: "Выбрать город",
-            is_active: true,
-            is_visible: true,
-        });
-    },
-
     methods: {
-        getWindowWidth() {
-            return window.Telegram.WebApp.expand();
+        isActive(menuItem) {
+            return this.activeItem === menuItem;
+        },
+        setActive(menuItem) {
+            this.activeItem = menuItem;
+            window.Telegram.WebApp.MainButton.setParams({
+                text: "Выбрать город",
+                is_active: true,
+                is_visible: true,
+            });
         },
     },
 };
@@ -82,12 +87,20 @@ export default {
 }
 .item {
     padding: 9px;
+    overflow: hidden;
     border-radius: 0.75rem;
     display: flex;
     align-items: center;
     text-align: left;
     cursor: pointer;
     transition: all 0.15s ease;
+    &.active {
+        background: var(--tg-theme-link-color) !important;
+        .title,
+        .status {
+            color: #fff;
+        }
+    }
     &:hover {
         background: var(--item-hover-bg);
     }
@@ -96,7 +109,6 @@ export default {
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: #ccc;
     margin-right: 16px;
     overflow: hidden;
     img {
