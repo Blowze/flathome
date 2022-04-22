@@ -17,13 +17,14 @@
                 <div class="noFound">Ничего не найдено</div>
             </template>
             <div
-                v-for="(item, index) in city"
+                v-for="item in city"
                 :key="'city-' + item"
-                class="item"
+                class="item md-ripple"
                 :data-active="item.isActive"
                 :class="{ active: isActive(item.id) }"
-                @touchstart="setActive(index)"
+                @touchstart.prevent="setActive(item)"
                 @click.prevent="setActive(item)"
+                @mousedown="setActive(item)"
             >
                 <div class="avatar">
                     <img :src="item.image" alt="" />
@@ -72,7 +73,24 @@ export default {
     },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
+.md-ripple {
+    overflow: hidden;
+    position: relative;
+}
+.md-ripple * {
+    pointer-events: none;
+}
+.md-ripple-effect {
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    background: #000;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    z-index: 1;
+}
 .noFound {
     color: var(--tg-theme-hint-color);
 }

@@ -34,7 +34,6 @@ const store = createStore({
     },
     mutations: {
         setCurentCity(state, item) {
-            state.cityCurrent = {};
             state.cityCurrent = item;
         },
     },
