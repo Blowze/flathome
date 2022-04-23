@@ -157,9 +157,10 @@ export default {
                 : "Ваш регион не указан";
         },
     },
-    mounted() {
-        window.Telegram.WebApp.expand;
+    created() {
         window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
+    },
+    mounted() {
         window.Telegram.WebApp.MainButton.setParams({
             text: "Поиск",
             is_active: true,
