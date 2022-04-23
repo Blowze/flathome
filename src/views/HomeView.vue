@@ -78,6 +78,7 @@ export default {
         },
         setActive(item) {
             this.$store.commit("setCurentCity", item);
+            this.$store.commit("setRegionCity", {});
             window.Telegram.WebApp.MainButton.setParams({
                 text: "Выбрать город",
                 is_active: true,
