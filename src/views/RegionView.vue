@@ -1,6 +1,9 @@
 <template>
     <div class="welcome page home">
-        <div class="form">
+        <div class="form flex">
+            <button class="back-button" @click="backButton">
+                <span class="icon-arrow-left2"></span>
+            </button>
             <div class="form__input">
                 <input
                     v-model="search"
@@ -78,21 +81,27 @@ export default {
     },
     computed: {
         region() {
+            const isCityCurrent = this.$store.state.cityCurrent.lenght
+                ? this.$store.state.cityCurrent
+                : this.cityCurrent;
             if (this.searchInput) {
-                return this.cityCurrent.region.filter((item) =>
+                return isCityCurrent.region.filter((item) =>
                     this.searchInput
                         .toLowerCase()
                         .split(" ")
                         .every((v) => item.name.toLowerCase().includes(v))
                 );
             }
-            return this.cityCurrent.region;
+            return isCityCurrent.region;
         },
     },
     mounted() {
         window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
     },
     methods: {
+        backButton() {
+            this.$router.push("/filter");
+        },
         routerFilter() {
             this.$router.push("/filter");
         },
@@ -100,10 +109,10 @@ export default {
             this.searchInput = e.target.value;
         },
         isActive(id) {
-            return this.cityCurrent.region.id === id;
+            return this.$store.state.regionCurrent.id === id;
         },
         setActive(item) {
-            this.$store.commit("setCurentCity", item);
+            this.$store.commit("setRegionCity", item);
             window.Telegram.WebApp.MainButton.setParams({
                 text: "Выбрать регион",
                 is_active: true,

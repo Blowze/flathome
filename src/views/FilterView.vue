@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="page-filter__container">
-            <div class="filter__item flex hover">
+            <div class="filter__item flex hover" @click="selectRegion">
                 <div class="filter__info">Ваш регион не указан</div>
                 <div class="icon-arrow-right2"></div>
                 <!-- <button type="button" class="button button-filter">
@@ -161,6 +161,22 @@ export default {
         });
     },
     methods: {
+        selectRegion() {
+            this.$router.push("/region");
+            if (this.$store.state.regionCurrent) {
+                window.Telegram.WebApp.MainButton.setParams({
+                    text: "Выбрать город",
+                    is_active: true,
+                    is_visible: true,
+                });
+            } else {
+                window.Telegram.WebApp.MainButton.setParams({
+                    text: "Выбрать город",
+                    is_active: false,
+                    is_visible: false,
+                });
+            }
+        },
         buttonBack() {
             this.$router.push("/");
             if (this.$store.state.cityCurrent) {
@@ -314,6 +330,7 @@ export default {
     color: var(--tg-theme-hint-color);
     padding: 0;
     min-width: 30px;
+    cursor: pointer;
 }
 .city-curent {
     display: flex;

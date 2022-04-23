@@ -189,11 +189,25 @@ export default {
 }
 .form {
     margin-bottom: 16px;
+    &.flex {
+        display: flex;
+        align-items: center;
+        .back-button {
+            margin-left: 0;
+            margin-right: 8px;
+            &:hover,
+            &:focus,
+            &:active {
+                background: var(--color-background);
+            }
+        }
+    }
     &__input {
         position: relative;
         color: rgba(var(--color-text-secondary-rgb), 0.5);
         display: flex;
         align-items: center;
+        width: 100%;
     }
     &__icon {
     }

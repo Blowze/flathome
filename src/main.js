@@ -13,23 +13,23 @@ const store = createStore({
                 id: 1,
                 region: [
                     {
-                        name: "Автозаводский",
+                        name: "Автозаводский Москва",
                         id: 1,
                     },
                     {
-                        name: "Канавинский",
+                        name: "Канавинский Москва",
                         id: 2,
                     },
                     {
-                        name: "Московский",
+                        name: "Московский Москва",
                         id: 3,
                     },
                     {
-                        name: "Лененский ",
+                        name: "Лененский Москва",
                         id: 4,
                     },
                     {
-                        name: "Балашиха",
+                        name: "Балашиха Москва",
                         id: 5,
                     },
                 ],
@@ -69,33 +69,37 @@ const store = createStore({
                 id: 3,
                 region: [
                     {
-                        name: "Автозаводский",
+                        name: "Автозаводский Петербург",
                         id: 1,
                     },
                     {
-                        name: "Канавинский",
+                        name: "Канавинский Петербург",
                         id: 2,
                     },
                     {
-                        name: "Московский",
+                        name: "Московский Петербург",
                         id: 3,
                     },
                     {
-                        name: "Лененский ",
+                        name: "Лененский Петербург",
                         id: 4,
                     },
                     {
-                        name: "Балашиха",
+                        name: "Балашиха Петербург",
                         id: 5,
                     },
                 ],
             },
         ],
         cityCurrent: {},
+        regionCurrent: {},
     },
     mutations: {
         setCurentCity(state, item) {
             state.cityCurrent = item;
+        },
+        setRegionCity(state, item) {
+            state.regionCurrent = item;
         },
     },
 });
