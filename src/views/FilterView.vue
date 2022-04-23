@@ -158,9 +158,10 @@ export default {
         },
     },
     created() {
-        window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
+        window.Telegram.WebApp.expand;
     },
     mounted() {
+        window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
         window.Telegram.WebApp.MainButton.setParams({
             text: "Поиск",
             is_active: true,
