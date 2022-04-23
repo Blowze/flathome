@@ -152,7 +152,7 @@ export default {
                 : this.cityCurrent;
         },
         regionCurent() {
-            return this.$store.state.regionCurrent.lenght
+            return this.$store.state.regionCurrent.length
                 ? this.$store.state.regionCurrent.name
                 : "Ваш регион не указан";
         },
@@ -170,13 +170,13 @@ export default {
             this.$router.push("/region");
             if (this.$store.state.regionCurrent) {
                 window.Telegram.WebApp.MainButton.setParams({
-                    text: "Выбрать город",
+                    text: "Выбрать регион",
                     is_active: true,
                     is_visible: true,
                 });
             } else {
                 window.Telegram.WebApp.MainButton.setParams({
-                    text: "Выбрать город",
+                    text: "Выбрать регион",
                     is_active: false,
                     is_visible: false,
                 });
@@ -274,7 +274,7 @@ export default {
 
     input:checked ~ .checkbox-main {
         &::before {
-            border-color: var(--tg-theme-link-color);
+            border-color: var(--tg-theme-button-color);
             background-color: var(--tg-theme-button-color);
         }
 

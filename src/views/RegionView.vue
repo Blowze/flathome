@@ -143,10 +143,7 @@ export default {
 </script>
 <style lang="scss" >
 .region .item {
-    border-radius: 0;
-    margin-left: -16px;
-    margin-right: -16px;
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 </style>
