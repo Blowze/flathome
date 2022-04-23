@@ -4,7 +4,6 @@
             <div class="form__input">
                 <input
                     v-model="search"
-                    type="text"
                     class="input"
                     placeholder="Поиск города"
                     @keyup="submitSearch"
