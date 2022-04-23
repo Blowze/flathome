@@ -96,13 +96,10 @@ export default {
         },
     },
     mounted() {
-        window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
+        window.Telegram.WebApp.onEvent("mainButtonClicked", this.backButton);
     },
     methods: {
         backButton() {
-            this.$router.push("/filter");
-        },
-        routerFilter() {
             this.$router.push("/filter");
         },
         submitSearch(e) {
