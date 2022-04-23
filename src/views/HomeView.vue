@@ -69,8 +69,13 @@ export default {
             return this.$store.state.city;
         },
     },
-    mounted() {},
+    mounted() {
+        window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
+    },
     methods: {
+        routerFilter() {
+            this.$router.push("/filter");
+        },
         submitSearch(e) {
             this.searchInput = e.target.value;
         },
