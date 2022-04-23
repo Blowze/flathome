@@ -1,9 +1,7 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
-import skeleton from "tb-skeleton";
+import VueLazyload from "@jambonn/vue-lazyload";
 import App from "./App.vue";
-import "tb-skeleton/dist/skeleton.css";
-
 import router from "./router";
 
 const store = createStore({
@@ -40,7 +38,10 @@ const store = createStore({
     },
 });
 const app = createApp(App);
-app.use(skeleton);
+app.use(VueLazyload, {
+    preLoad: 1.3,
+    attempt: 1,
+});
 app.use(router);
 app.use(store);
 

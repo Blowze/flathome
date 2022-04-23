@@ -1,6 +1,9 @@
 <template>
     <div class="welcome">
-        <div v-if="loading" class="form">
+        {{ search }}
+        {{ searchTest }}
+
+        <div class="form">
             <div class="form__input">
                 <input
                     v-model="search"
@@ -28,8 +31,8 @@
                 @click="setActive(item), animateButton($event)"
                 @mousedown="setActive(item)"
             >
-                <div class="avatar">
-                    <img :src="item.image" alt="" />
+                <div v-lazy-container="{ selector: 'img' }" class="avatar">
+                    <img :data-src="item.image" />
                 </div>
                 <div class="info">
                     <div class="title">
@@ -50,6 +53,7 @@ export default {
             activeItem: false,
             loading: false,
             search: "",
+            searchTest: "",
         };
     },
     computed: {
@@ -69,14 +73,11 @@ export default {
             return this.$store.state.city;
         },
     },
-    mounted() {
-        this.$nextTick(function () {
-            window.addEventListener("load", () => {
-                this.loading = true;
-            });
-        });
-    },
+    mounted() {},
     methods: {
+        submitSearch(e) {
+            this.searchTest = e.target.value;
+        },
         isActive(id) {
             return this.$store.state.cityCurrent.id === id;
         },
@@ -105,7 +106,7 @@ export default {
 
             setTimeout(() => {
                 ripple.parentNode.removeChild(ripple);
-            }, 450);
+            }, 300);
         },
     },
 };
@@ -173,10 +174,36 @@ export default {
     border-radius: 50%;
     margin-right: 16px;
     overflow: hidden;
+    position: relative;
+
+    background: var(--color-background);
+
     img {
         width: 100%;
         object-fit: cover;
         height: 100%;
+    }
+    img[lazy="loading"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: linear-gradient(
+            90deg,
+            rgba(#fff, 0) 0,
+            rgba(#fff, 0.2) 20%,
+            rgba(#fff, 0.5) 60%,
+            rgba(#fff, 0)
+        );
+        animation: shimmer 2s infinite;
+        z-index: 10;
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
     }
 }
 .form {
