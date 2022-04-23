@@ -1,5 +1,5 @@
 <template>
-    <div class="welcome page home">
+    <div class="welcome page home region">
         <div class="form flex">
             <button class="back-button" @click="backButton">
                 <span class="icon-arrow-left2"></span>
@@ -142,5 +142,11 @@ export default {
 };
 </script>
 <style lang="scss" >
-
+.region .item {
+    border-radius: 0;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
 </style>

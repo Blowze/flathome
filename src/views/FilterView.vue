@@ -27,7 +27,7 @@
         </div>
         <div class="page-filter__container">
             <div class="filter__item flex hover" @click="selectRegion">
-                <div class="filter__info">Ваш регион не указан</div>
+                <div class="filter__info">{{ regionCurent }}</div>
                 <div class="icon-arrow-right2"></div>
                 <!-- <button type="button" class="button button-filter">
                     Добавить
@@ -150,6 +150,11 @@ export default {
             return this.$store.state.cityCurrent.id
                 ? this.$store.state.cityCurrent
                 : this.cityCurrent;
+        },
+        regionCurent() {
+            return this.$store.state.regionCurrent.lenght
+                ? this.$store.state.regionCurrent.name
+                : "Ваш регион не указан";
         },
     },
     mounted() {
