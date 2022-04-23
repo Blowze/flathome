@@ -154,6 +154,11 @@ export default {
     },
     mounted() {
         window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
+        window.Telegram.WebApp.MainButton.setParams({
+            text: "Поиск",
+            is_active: true,
+            is_visible: true,
+        });
     },
     methods: {
         buttonBack() {
@@ -191,7 +196,7 @@ export default {
     text-align: left;
     margin-bottom: 12px;
     line-height: 22px;
-    color: #fff;
+    color: var(--tg-theme-text-color);
     font-size: 14px;
     cursor: pointer;
     input {
@@ -212,7 +217,7 @@ export default {
         }
 
         &::before {
-            border: 2px solid rgb(91, 91, 90);
+            border: 2px solid var(--color-border-input);
             border-radius: 0.25rem;
             background-color: var(--color-background);
             transition: border-color 0.1s ease, background-color 0.1s ease;
@@ -325,7 +330,6 @@ export default {
     }
 }
 .page-filter {
-    height: 100%;
     background: var(--color-background-secondary);
 
     &__container {
@@ -360,7 +364,7 @@ export default {
         }
         &:first-child {
             margin-top: 0;
-            border-top: 1px solid rgb(48, 48, 48);
+            border-top: 1px solid var(--color-border-item);
         }
     }
     &__header {

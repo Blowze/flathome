@@ -26,6 +26,7 @@ body,
 html {
     height: 100%;
     background: var(--tg-theme-bg-color);
+    font-weight: 500;
 }
 .scale-enter-active,
 .scale-leave-active {
