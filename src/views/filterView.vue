@@ -20,13 +20,111 @@
                         </div>
                     </div>
                     <button class="back-button">
-                        <span class="icon-equalizer"></span>
+                        <span class="icon-cog"></span>
                     </button>
                 </div>
             </div>
         </div>
         <div class="page-filter__container">
-            <h1>This is an filterView page</h1>
+            <div class="filter__item flex">
+                <div class="filter__info">Ваш регион не указан</div>
+                <div class="icon-arrow-right2"></div>
+                <!-- <button type="button" class="button button-filter">
+                    Добавить
+                </button> -->
+            </div>
+            <div class="filter__item">
+                <h4 class="filter__title">Тип</h4>
+                <div class="filter__body">
+                    <label class="checkbox">
+                        <input type="checkbox" name="peas" />
+                        <div class="checkbox-main">
+                            <span class="label"> Жилая </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="peas" />
+                        <div class="checkbox-main">
+                            <span class="label"> Апартаменты </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="filter__item">
+                <h4 class="filter__title">Количество комнат</h4>
+                <div class="filter__body room-grid">
+                    <label class="checkbox">
+                        <input type="checkbox" name="room" />
+                        <div class="checkbox-main">
+                            <span class="label"> 1 </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="room" />
+                        <div class="checkbox-main">
+                            <span class="label"> 2 </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="room" />
+                        <div class="checkbox-main">
+                            <span class="label"> 3 </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="room" />
+                        <div class="checkbox-main">
+                            <span class="label"> 4 </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="room" />
+                        <div class="checkbox-main">
+                            <span class="label"> 5+ </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="room" />
+                        <div class="checkbox-main">
+                            <span class="label"> Студия </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="filter__item">
+                <h4 class="filter__title">Площадь</h4>
+                <div class="filter__body">
+                    <label class="checkbox">
+                        <input type="checkbox" name="peas" />
+                        <div class="checkbox-main">
+                            <span class="label"> Жилая </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="peas" />
+                        <div class="checkbox-main">
+                            <span class="label"> Апартаменты </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="filter__item">
+                <h4 class="filter__title">Этажность</h4>
+                <div class="filter__body">
+                    <label class="checkbox">
+                        <input type="checkbox" name="peas" />
+                        <div class="checkbox-main">
+                            <span class="label"> Жилая </span>
+                        </div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="peas" />
+                        <div class="checkbox-main">
+                            <span class="label"> Апартаменты </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -84,6 +182,108 @@ export default {
 };
 </script>
 <style lang="scss" >
+.room-grid {
+}
+.checkbox {
+    display: block;
+    position: relative;
+    padding-left: calc(20px + 18px);
+    text-align: left;
+    margin-bottom: 12px;
+    line-height: 22px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    .checkbox-main {
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 18px;
+            height: 18px;
+        }
+
+        &::before {
+            border: 2px solid rgb(91, 91, 90);
+            border-radius: 0.25rem;
+            background-color: var(--color-background);
+            transition: border-color 0.1s ease, background-color 0.1s ease;
+        }
+
+        &::after {
+            /* stylelint-disable-next-line scss/operator-no-unspaced */
+            background: center no-repeat
+                url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEzLjkuOEw1LjggOC45IDIuMSA1LjJjLS40LS40LTEuMS0uNC0xLjYgMC0uNC40LS40IDEuMSAwIDEuNkw1IDExLjJjLjQuNCAxLjEuNCAxLjYgMGw4LjktOC45Yy40LS40LjQtMS4xIDAtMS42LS41LS40LTEuMi0uNC0xLjYuMXoiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvc3ZnPg==);
+            background-size: 0.875rem;
+            opacity: 0;
+            transition: opacity 0.1s ease;
+            width: 22px;
+            height: 22px;
+        }
+
+        .label {
+            display: block;
+            text-align: initial;
+        }
+    }
+
+    input:checked ~ .checkbox-main {
+        &::before {
+            border-color: var(--tg-theme-link-color);
+            background-color: var(--tg-theme-link-color);
+        }
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &[dir="rtl"] {
+        padding-left: 0;
+        padding-right: 4.5rem;
+
+        &.loading {
+            .Spinner {
+                left: auto;
+                right: 0.375rem;
+            }
+        }
+
+        .label,
+        .subLabel {
+            text-align: right;
+        }
+
+        .checkbox-main {
+            &::before,
+            &::after {
+                left: auto;
+                right: 1.1875rem;
+            }
+        }
+    }
+}
+.button-filter {
+    padding: 0 15px;
+    font-size: 12px;
+    height: 32px;
+    border-radius: 1.25rem;
+    width: auto;
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
 .back-button {
     margin-left: 8px;
     width: 30px;
@@ -125,26 +325,54 @@ export default {
     }
 }
 .page-filter {
+    height: 100%;
+    background: var(--color-background-secondary);
+
     &__container {
         width: 100%;
         max-width: 480px;
         margin: 0 auto;
-        padding: 4px 16px;
         text-align: center;
         margin: auto;
+        & > div {
+            background: var(--tg-theme-bg-color);
+        }
     }
 }
 .filter {
+    // box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25098);
+    &__title {
+        margin-top: 8px;
+        margin-bottom: 24px;
+    }
+    &__info {
+        font-size: 14px;
+    }
+    &__item {
+        text-align: left;
+        color: var(--tg-theme-hint-color);
+        margin-top: 8px;
+        padding: 16px;
+        &.flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &:first-child {
+            margin-top: 0;
+            border-top: 1px solid rgb(48, 48, 48);
+        }
+    }
     &__header {
-        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25098);
         &-container {
             max-width: 480px;
             margin: auto;
             display: flex;
             align-items: center;
             padding: 8px;
-            padding-top: 4px;
             padding-left: 16px;
+            padding-right: 10px;
+            background: var(--tg-theme-bg-color);
         }
     }
 }
