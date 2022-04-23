@@ -68,6 +68,9 @@ export default {
     },
     methods: {
         routerFilter() {
+            this.$nextTick(() => {
+                window.Telegram.WebApp.expand;
+            });
             this.$router.push("/filter");
         },
         submitSearch(e) {

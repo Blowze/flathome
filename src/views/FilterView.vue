@@ -157,9 +157,7 @@ export default {
                 : "Ваш регион не указан";
         },
     },
-    created() {
-        window.Telegram.WebApp.expand;
-    },
+
     mounted() {
         window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
         window.Telegram.WebApp.MainButton.setParams({
