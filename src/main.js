@@ -1,9 +1,10 @@
 import { createApp } from "vue";
-import Skeleton from "vue-loading-skeleton";
 import { createStore } from "vuex";
+import skeleton from "tb-skeleton";
 import App from "./App.vue";
+import "tb-skeleton/dist/skeleton.css";
+
 import router from "./router";
-import "vue-loading-skeleton/dist/style.css";
 
 const store = createStore({
     state: {
@@ -39,8 +40,8 @@ const store = createStore({
     },
 });
 const app = createApp(App);
+app.use(skeleton);
 app.use(router);
-app.use(Skeleton);
 app.use(store);
 
 app.mount("#app");

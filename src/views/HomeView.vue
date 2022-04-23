@@ -1,6 +1,6 @@
 <template>
     <div class="welcome">
-        <div class="form">
+        <div v-if="loading" class="form">
             <div class="form__input">
                 <input
                     v-model="search"
@@ -9,9 +9,11 @@
                     placeholder="Поиск города"
                     @keyup="submitSearch"
                 />
+
                 <i class="input__icon icon-search"></i>
             </div>
         </div>
+
         <div class="form__body">
             <template v-if="city.length === 0">
                 <div class="noFound">Ничего не найдено</div>
@@ -30,7 +32,9 @@
                     <img :src="item.image" alt="" />
                 </div>
                 <div class="info">
-                    <div class="title">{{ item.name }}</div>
+                    <div class="title">
+                        {{ item.name }}
+                    </div>
                     <div class="status">{{ item.count }}</div>
                 </div>
             </button>
@@ -44,6 +48,7 @@ export default {
     data() {
         return {
             activeItem: false,
+            loading: false,
             search: "",
         };
     },
@@ -64,6 +69,13 @@ export default {
             return this.$store.state.city;
         },
     },
+    mounted() {
+        this.$nextTick(function () {
+            window.addEventListener("load", () => {
+                this.loading = true;
+            });
+        });
+    },
     methods: {
         isActive(id) {
             return this.$store.state.cityCurrent.id === id;
@@ -77,8 +89,8 @@ export default {
             });
         },
         animateButton(e) {
-            const ripple = document.createElement("span");
-            const rippleOffset = e.target.getBoundingClientRect();
+            const ripple = document.createElement("i");
+            const rippleOffset = e.currentTarget.getBoundingClientRect();
 
             const rippleY = e.pageY - rippleOffset.top;
             const rippleX = e.pageX - rippleOffset.left;
@@ -87,9 +99,9 @@ export default {
             (ripple.style.top = `${rippleY}px`),
                 (ripple.style.left = `${rippleX}px`),
                 (ripple.style.background =
-                    e.target.getAttribute("data-ripple-color"));
+                    e.currentTarget.getAttribute("data-ripple-color"));
 
-            e.target.appendChild(ripple);
+            e.currentTarget.appendChild(ripple);
 
             setTimeout(() => {
                 ripple.parentNode.removeChild(ripple);
@@ -103,7 +115,7 @@ export default {
     overflow: hidden;
     position: relative;
     z-index: 1;
-    span {
+    i {
         animation: ink 0.5s;
         border-radius: 100%;
         background: #ffffff;
