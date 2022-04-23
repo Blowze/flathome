@@ -152,7 +152,7 @@ export default {
                 : this.cityCurrent;
         },
         regionCurent() {
-            return this.$store.state.regionCurrent.length
+            return this.$store.state.regionCurrent.name
                 ? this.$store.state.regionCurrent.name
                 : "Ваш регион не указан";
         },
