@@ -163,6 +163,19 @@ export default {
     methods: {
         buttonBack() {
             this.$router.push("/");
+            if (this.$store.state.cityCurrent) {
+                window.Telegram.WebApp.MainButton.setParams({
+                    text: "Выбрать город",
+                    is_active: true,
+                    is_visible: true,
+                });
+            } else {
+                window.Telegram.WebApp.MainButton.setParams({
+                    text: "Выбрать город",
+                    is_active: false,
+                    is_visible: false,
+                });
+            }
         },
         animateButton(e) {
             const ripple = document.createElement("i");
@@ -243,7 +256,7 @@ export default {
     input:checked ~ .checkbox-main {
         &::before {
             border-color: var(--tg-theme-link-color);
-            background-color: var(--tg-theme-link-color);
+            background-color: var(--tg-theme-button-color);
         }
 
         &::after {

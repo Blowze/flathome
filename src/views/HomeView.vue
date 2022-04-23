@@ -122,7 +122,7 @@ export default {
     i {
         animation: ink 0.5s;
         border-radius: 100%;
-        background: #ffffff;
+        background: rgb(244, 244, 245);
         height: 12px;
         position: absolute;
         width: 12px;
