@@ -67,6 +67,9 @@ export default {
         window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
     },
     methods: {
+        routerFilter() {
+            this.$router.push("/filter");
+        },
         submitSearch(e) {
             this.searchInput = e.target.value;
         },
