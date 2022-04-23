@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="page-filter__container">
-            <div class="filter__item flex">
+            <div class="filter__item flex hover">
                 <div class="filter__info">Ваш регион не указан</div>
                 <div class="icon-arrow-right2"></div>
                 <!-- <button type="button" class="button button-filter">
@@ -200,8 +200,6 @@ export default {
 };
 </script>
 <style lang="scss" >
-.room-grid {
-}
 .checkbox {
     display: block;
     position: relative;
@@ -375,6 +373,14 @@ export default {
             align-items: center;
             justify-content: space-between;
         }
+        &.hover {
+            cursor: pointer;
+            &:hover,
+            &:focus,
+            &:active {
+                background: var(--color-background);
+            }
+        }
         &:first-child {
             margin-top: 0;
             border-top: 1px solid var(--color-border-item);
@@ -390,6 +396,12 @@ export default {
             padding-left: 16px;
             padding-right: 10px;
             background: var(--tg-theme-bg-color);
+            cursor: pointer;
+            &:hover,
+            &:focus,
+            &:active {
+                background: var(--color-background);
+            }
         }
     }
 }

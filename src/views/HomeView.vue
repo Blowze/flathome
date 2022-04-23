@@ -111,7 +111,7 @@ export default {
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
-    padding: 4px 16px;
+    padding: 8px 16px;
     text-align: center;
     margin: auto;
 }
@@ -122,7 +122,7 @@ export default {
     i {
         animation: ink 0.5s;
         border-radius: 100%;
-        background: rgb(244, 244, 245);
+        background: var(--color-background);
         height: 12px;
         position: absolute;
         width: 12px;
