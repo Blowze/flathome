@@ -1,6 +1,5 @@
 <template>
     <div class="welcome page home">
-        <div class="" @click="routerFilter">,fk ,fk</div>
         <div class="form">
             <div class="form__input">
                 <input
@@ -68,9 +67,6 @@ export default {
         window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
     },
     methods: {
-        routerFilter() {
-            this.$router.push("/filter");
-        },
         submitSearch(e) {
             this.searchInput = e.target.value;
         },

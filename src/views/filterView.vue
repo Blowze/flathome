@@ -1,7 +1,10 @@
 <template>
     <div class="page-filter">
         <div class="filter">
-            <div class="filter__header">
+            <div
+                class="filter__header ripple ripple-js"
+                @click="buttonBack(), animateButton($event)"
+            >
                 <div class="filter__header-container">
                     <div class="city-curent">
                         <div class="city-curent__avatar">
@@ -16,14 +19,15 @@
                             </div>
                         </div>
                     </div>
-                    <button class="back-button" @click="buttonBack">
+                    <button class="back-button">
                         <span class="icon-equalizer"></span>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="page-filter__container"></div>
-        <h1>This is an filterView page</h1>
+        <div class="page-filter__container">
+            <h1>This is an filterView page</h1>
+        </div>
     </div>
 </template>
 <script>
@@ -57,6 +61,25 @@ export default {
         buttonBack() {
             this.$router.push("/");
         },
+        animateButton(e) {
+            const ripple = document.createElement("i");
+            const rippleOffset = e.currentTarget.getBoundingClientRect();
+
+            const rippleY = e.pageY - rippleOffset.top;
+            const rippleX = e.pageX - rippleOffset.left;
+
+            // eslint-disable-next-line no-sequences
+            (ripple.style.top = `${rippleY}px`),
+                (ripple.style.left = `${rippleX}px`),
+                (ripple.style.background =
+                    e.currentTarget.getAttribute("data-ripple-color"));
+
+            e.currentTarget.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.parentNode.removeChild(ripple);
+            }, 300);
+        },
     },
 };
 </script>
@@ -75,11 +98,6 @@ export default {
     color: var(--tg-theme-hint-color);
     padding: 0;
     min-width: 30px;
-    transition: background-color 0.15s, color 0.15s;
-    &:hover,
-    &:focus {
-        background-color: #ffffff14;
-    }
 }
 .city-curent {
     display: flex;
@@ -125,6 +143,8 @@ export default {
             display: flex;
             align-items: center;
             padding: 8px;
+            padding-top: 4px;
+            padding-left: 16px;
         }
     }
 }
