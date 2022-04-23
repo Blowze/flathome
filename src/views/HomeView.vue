@@ -1,5 +1,5 @@
 <template>
-    <div class="welcome page">
+    <div class="welcome page home">
         <div class="" @click="routerFilter">,fk ,fk</div>
         <div class="form">
             <div class="form__input">
@@ -47,17 +47,11 @@ export default {
     name: "HomeView",
     data() {
         return {
-            activeItem: false,
-            loading: false,
             search: "",
             searchInput: "",
         };
     },
     computed: {
-        // геттер вычисляемого значения
-        userName() {
-            return this.$store.state.cityCurrent[0];
-        },
         city() {
             if (this.searchInput) {
                 return this.$store.state.city.filter((item) =>
@@ -114,6 +108,14 @@ export default {
 };
 </script>
 <style lang="scss" >
+.home {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 4px 16px;
+    text-align: center;
+    margin: auto;
+}
 .ripple {
     overflow: hidden;
     position: relative;
@@ -224,13 +226,5 @@ export default {
         font-size: 16px;
         pointer-events: none;
     }
-}
-.welcome {
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 4px 16px;
-    text-align: center;
-    margin: auto;
 }
 </style>
