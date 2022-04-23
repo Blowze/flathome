@@ -4,7 +4,7 @@
     <router-link to="/about">About</router-link>
   </nav> -->
     <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
+        <transition name="scale" mode="out-in">
             <component :is="Component" />
         </transition>
     </router-view>
@@ -18,18 +18,23 @@
     background: var(--tg-theme-bg-color);
     height: 100%;
 }
+.page {
+    background: var(--tg-theme-bg-color);
+    height: 100%;
+}
 body,
 html {
     height: 100%;
     background: var(--tg-theme-bg-color);
 }
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s ease;
+.scale-enter-active,
+.scale-leave-active {
+    transition: all 0.5s ease;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.scale-enter-from,
+.scale-leave-to {
     opacity: 0;
+    transform: scale(0.9);
 }
 </style>

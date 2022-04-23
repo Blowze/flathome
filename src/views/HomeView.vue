@@ -1,5 +1,5 @@
 <template>
-    <div class="welcome">
+    <div class="welcome page">
         <div class="" @click="routerFilter">,fk ,fk</div>
         <div class="form">
             <div class="form__input">
