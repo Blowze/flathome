@@ -1,5 +1,6 @@
 <template>
     <div class="welcome">
+        <div class="" @click="routerFilter">,fk ,fk</div>
         <div class="form">
             <div class="form__input">
                 <input
