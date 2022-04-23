@@ -81,7 +81,7 @@ export default {
     },
     computed: {
         region() {
-            const isCityCurrent = this.$store.state.cityCurrent.lenght
+            const isCityCurrent = this.$store.state.cityCurrent.name
                 ? this.$store.state.cityCurrent
                 : this.cityCurrent;
             if (this.searchInput) {
