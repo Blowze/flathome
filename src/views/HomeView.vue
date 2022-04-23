@@ -1,8 +1,5 @@
 <template>
     <div class="welcome">
-        {{ search }}
-        {{ searchTest }}
-
         <div class="form">
             <div class="form__input">
                 <input
@@ -31,8 +28,8 @@
                 @click="setActive(item), animateButton($event)"
                 @mousedown="setActive(item)"
             >
-                <div v-lazy-container="{ selector: 'img' }" class="avatar">
-                    <img :data-src="item.image" />
+                <div class="avatar">
+                    <img :src="item.image" />
                 </div>
                 <div class="info">
                     <div class="title">
@@ -53,7 +50,7 @@ export default {
             activeItem: false,
             loading: false,
             search: "",
-            searchTest: "",
+            searchInput: "",
         };
     },
     computed: {
@@ -62,9 +59,9 @@ export default {
             return this.$store.state.cityCurrent[0];
         },
         city() {
-            if (this.search) {
+            if (this.searchInput) {
                 return this.$store.state.city.filter((item) =>
-                    this.search
+                    this.searchInput
                         .toLowerCase()
                         .split(" ")
                         .every((v) => item.name.toLowerCase().includes(v))
@@ -76,7 +73,7 @@ export default {
     mounted() {},
     methods: {
         submitSearch(e) {
-            this.searchTest = e.target.value;
+            this.searchInput = e.target.value;
         },
         isActive(id) {
             return this.$store.state.cityCurrent.id === id;
@@ -182,28 +179,6 @@ export default {
         width: 100%;
         object-fit: cover;
         height: 100%;
-    }
-    img[lazy="loading"] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        transform: translateX(-100%);
-        background-image: linear-gradient(
-            90deg,
-            rgba(#fff, 0) 0,
-            rgba(#fff, 0.2) 20%,
-            rgba(#fff, 0.5) 60%,
-            rgba(#fff, 0)
-        );
-        animation: shimmer 2s infinite;
-        z-index: 10;
-        @keyframes shimmer {
-            100% {
-                transform: translateX(100%);
-            }
-        }
     }
 }
 .form {

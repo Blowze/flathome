@@ -1,6 +1,5 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
-import VueLazyload from "@jambonn/vue-lazyload";
 import App from "./App.vue";
 import router from "./router";
 
@@ -38,10 +37,7 @@ const store = createStore({
     },
 });
 const app = createApp(App);
-app.use(VueLazyload, {
-    preLoad: 1.3,
-    attempt: 1,
-});
+
 app.use(router);
 app.use(store);
 
