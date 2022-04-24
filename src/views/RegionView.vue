@@ -1,58 +1,51 @@
 <template>
-    <div class="welcome page home region">
-        <div class="form flex">
-            <button class="back-button" @click="backButton">
-                <span class="icon-arrow-left2"></span>
-            </button>
-            <div class="form__input">
-                <input
-                    v-model="search"
-                    class="input"
-                    placeholder="Поиск региона"
-                    @keyup="submitSearch"
-                />
-
-                <i class="input__icon icon-search"></i>
-            </div>
-        </div>
-
-        <div class="form__body">
-            <template v-if="region.length === 0">
-                <div class="noFound">Ничего не найдено</div>
-            </template>
-            <button
-                v-for="item in region"
-                :key="'region-' + item"
-                class="item ripple ripple-js"
-                :class="{ active: isActive(item.id) }"
-                data-ripple-color="#FFF"
-                @touchstart="setActive(item)"
-                @click="setActive(item), animateButton($event)"
-                @mousedown="setActive(item)"
-            >
-                <div class="info">
-                    <div class="title">
-                        {{ item.name }}
-                    </div>
-                    <div class="status">{{ item.count }}</div>
+    <div class="page">
+        <div class="page__container">
+            <SearchHeader
+                :back-button="true"
+                placeholder="Поиск региона"
+                @keyup="submitSearchCity"
+            />
+            <div class="SearchBody">
+                <template v-if="region.length === 0">
+                    <div class="SearchBody__noFound">Ничего не найдено</div>
+                </template>
+                <div
+                    v-for="item in region"
+                    :key="'region-' + item"
+                    class="SearchBody__SearchCards"
+                >
+                    <SearchCard
+                        :name="item.name"
+                        :active="isActive(item.id)"
+                        @touchstart="setActiveRegion(item)"
+                        @click="setActiveRegion(item)"
+                        @mousedown="setActiveRegion(item)"
+                    />
                 </div>
-            </button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import SearchHeader from "../components/SearchHeader.vue";
+import SearchCard from "../components/SearchCard.vue";
+
 export default {
     name: "HomeView",
+    components: {
+        SearchHeader,
+        SearchCard,
+    },
     data() {
         return {
-            search: "",
             searchInput: "",
+            // delete if possible
             cityCurrent: {
                 name: "Москва",
                 image: "https://i.pinimg.com/originals/e8/97/68/e89768eb0617f7befeb48736bce12671.png",
                 count: "13 Новостроек",
-                isActive: false,
                 id: 1,
                 region: [
                     {
@@ -81,8 +74,8 @@ export default {
     },
     computed: {
         region() {
-            const isCityCurrent = this.$store.state.cityCurrent.name
-                ? this.$store.state.cityCurrent
+            const isCityCurrent = this.$store.state.city.curent.name
+                ? this.$store.state.city.curent
                 : this.cityCurrent;
             if (this.searchInput) {
                 return isCityCurrent.region.filter((item) =>
@@ -95,6 +88,9 @@ export default {
             return isCityCurrent.region;
         },
     },
+    "$route.path": function () {
+        window.Telegram.WebApp.offEvent("mainButtonClicked");
+    },
     mounted() {
         window.Telegram.WebApp.onEvent("mainButtonClicked", this.backButton);
     },
@@ -106,41 +102,16 @@ export default {
             this.searchInput = e.target.value;
         },
         isActive(id) {
-            return this.$store.state.regionCurrent.id === id;
+            return this.$store.state.city.regionCurrent.id === id;
         },
-        setActive(item) {
-            this.$store.commit("setRegionCity", item);
+        setActiveRegion(item) {
+            this.$store.commit("city/SET_SELECT_REGION", item);
             window.Telegram.WebApp.MainButton.setParams({
                 text: "Выбрать регион",
                 is_active: true,
                 is_visible: true,
             });
         },
-        animateButton(e) {
-            const ripple = document.createElement("i");
-            const rippleOffset = e.currentTarget.getBoundingClientRect();
-
-            const rippleY = e.pageY - rippleOffset.top;
-            const rippleX = e.pageX - rippleOffset.left;
-
-            // eslint-disable-next-line no-sequences
-            (ripple.style.top = `${rippleY}px`),
-                (ripple.style.left = `${rippleX}px`),
-                (ripple.style.background =
-                    e.currentTarget.getAttribute("data-ripple-color"));
-
-            e.currentTarget.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.parentNode.removeChild(ripple);
-            }, 300);
-        },
     },
 };
 </script>
-<style lang="scss" >
-.region .item {
-    padding-left: 16px;
-    padding-right: 16px;
-}
-</style>

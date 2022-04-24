@@ -1,7 +1,14 @@
 <template>
-    <div class="SearchHeader">
+    <div class="SearchHeader" :class="{ 'SearchHeader-Flex': backButton }">
+        <button
+            v-if="backButton"
+            class="SearchHeader__BackButton"
+            @click="backButtonRouter"
+        >
+            <span class="icon-arrow-left2"></span>
+        </button>
         <div class="SearchHeader__input">
-            <input class="input" placeholder="Поиск города" />
+            <input class="input" :placeholder="placeholder" />
             <i class="input__icon icon-search"></i>
         </div>
     </div>
@@ -10,13 +17,25 @@
 <script>
 export default {
     name: "SearchHeader",
+    props: {
+        backButton: Boolean,
+        placeholder: String,
+    },
+    methods: {
+        backButtonRouter() {
+            this.$router.push("/filter");
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss" >
 .SearchHeader {
     margin-bottom: var(--space-normal);
-
+    &-Flex {
+        display: flex;
+        align-items: center;
+    }
     &__input {
         position: relative;
         color: rgba(var(--color-text-secondary-rgb), 0.5);
@@ -24,12 +43,32 @@ export default {
         align-items: center;
         width: 100%;
     }
+    &__BackButton {
+        margin-right: var(--space-small);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        color: var(--tg-theme-hint-color);
+        padding: 0;
+        min-width: 30px;
+        cursor: pointer;
+        &:hover,
+        &:focus,
+        &:active {
+            background: var(--item-hover-bg);
+        }
+    }
 }
 .input {
     width: 100%;
     border-radius: 50%;
     height: 40px;
-    border-radius: 1.25rem;
+    border-radius: 22px;
     background: var(--color-background);
     border: 2px solid var(--color-background);
     outline: none;

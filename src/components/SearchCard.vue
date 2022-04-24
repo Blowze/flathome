@@ -5,14 +5,14 @@
         :class="{ 'SearchCard-Active': active }"
         @click="animateButton($event)"
     >
-        <div class="SearchCard__avatar">
+        <div v-if="image" class="SearchCard__avatar">
             <img :src="image" />
         </div>
         <div class="SearchCard__info">
             <div class="SearchCard__title">
                 {{ name }}
             </div>
-            <div class="SearchCard__status">{{ status }}</div>
+            <div v-if="status" class="SearchCard__status">{{ status }}</div>
         </div>
     </div>
 </template>

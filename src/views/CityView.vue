@@ -1,7 +1,10 @@
 <template>
     <div class="page">
         <div class="page__container">
-            <SearchHeader @keyup="submitSearchCity" />
+            <SearchHeader
+                placeholder="Поиск города"
+                @keyup="submitSearchCity"
+            />
             <div class="SearchBody">
                 <template v-if="city.length === 0">
                     <div class="SearchBody__noFound">Ничего не найдено</div>
@@ -61,7 +64,6 @@ export default {
     },
     watch: {
         "$route.path": function () {
-            console.log("red");
             window.Telegram.WebApp.offEvent("mainButtonClicked");
         },
     },

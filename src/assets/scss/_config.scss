@@ -4,15 +4,21 @@
     --space-big: 24px;
     --space-medium: 18px;
     --space-normal: 16px;
-    --space-small: 8px
-
+    --space-small: 8px;
+    --slider-height: 2px;
+    --slider-connect-bg: var(--tg-theme-button-color);
+    --slider-handle-bg: var(--tg-theme-button-color);
+    --slider-handle-width: 15px;
+    --slider-handle-height: 15px;
+    --slider-handle-shadow: none;
 }
 .dark {
     --color-background: rgb(44,44,44);
     --item-hover-bg: #2c2c2c;
-    --color-background-secondary: rgb(15,15,15);
-    --color-border-item: rgb(48, 48, 48);
+    --color-background-secondary: #181818;
+    --color-border-item: #0f0f0f;
     --color-border-input: rgb(91, 91, 90);
+    --slider-bg: #fff
 }
 
 .light {
