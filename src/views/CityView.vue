@@ -53,18 +53,23 @@ export default {
     computed: {
         city() {
             if (this.searchInput) {
-                return this.$store.state.city.filter((item) =>
+                return this.$store.state.city.items.filter((item) =>
                     this.searchInput
                         .toLowerCase()
                         .split(" ")
                         .every((v) => item.name.toLowerCase().includes(v))
                 );
             }
-            return this.$store.state.city;
+            return this.$store.state.city.items;
         },
     },
     mounted() {
-        window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
+        this.$nextTick(() => {
+            window.Telegram.WebApp.onEvent(
+                "mainButtonClicked",
+                this.routerFilter
+            );
+        });
     },
     methods: {
         routerFilter() {
@@ -77,11 +82,11 @@ export default {
             this.searchInput = e.target.value;
         },
         isActive(id) {
-            return this.$store.state.cityCurrent.id === id;
+            return this.$store.state.city.curent.id === id;
         },
         setActive(item) {
-            this.$store.commit("setCurentCity", item);
-            this.$store.commit("setRegionCity", {});
+            this.$store.commit("city/SET_SELECT", item);
+            this.$store.commit("city/SET_SELECT_REGION", {});
             window.Telegram.WebApp.MainButton.setParams({
                 text: "Выбрать город",
                 is_active: true,
@@ -91,18 +96,14 @@ export default {
         animateButton(e) {
             const ripple = document.createElement("i");
             const rippleOffset = e.currentTarget.getBoundingClientRect();
-
             const rippleY = e.pageY - rippleOffset.top;
             const rippleX = e.pageX - rippleOffset.left;
-
             // eslint-disable-next-line no-sequences
             (ripple.style.top = `${rippleY}px`),
                 (ripple.style.left = `${rippleX}px`),
                 (ripple.style.background =
                     e.currentTarget.getAttribute("data-ripple-color"));
-
             e.currentTarget.appendChild(ripple);
-
             setTimeout(() => {
                 ripple.parentNode.removeChild(ripple);
             }, 300);
@@ -166,7 +167,6 @@ export default {
     border: none;
     background: transparent;
     width: 100%;
-
     &.active {
         background: var(--tg-theme-button-color) !important;
         .title,
@@ -182,9 +182,7 @@ export default {
     margin-right: 16px;
     overflow: hidden;
     position: relative;
-
     background: var(--color-background);
-
     img {
         width: 100%;
         object-fit: cover;
