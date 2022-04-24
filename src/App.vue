@@ -4,7 +4,7 @@
     <router-link to="/about">About</router-link>
   </nav> -->
     <router-view v-slot="{ Component }">
-        <transition name="animation-scale" mode="animation-out-in">
+        <transition name="scale" mode="out-in">
             <component :is="Component" />
         </transition>
     </router-view>
