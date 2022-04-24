@@ -67,7 +67,9 @@ module.exports = {
         "import/extensions": 0,
         "import/no-extraneous-dependencies": 0,
         "vue/no-lone-template": 0,
+        "vue/require-default-prop": "off",
         "prefer-destructuring": 0,
+        "func-names": "off",
         "no-plusplus": 0,
         "max-len": 0,
         "no-param-reassign": [

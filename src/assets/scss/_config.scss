@@ -1,6 +1,10 @@
 :root {
     --color-primary: #0D6EFD;
     --color-text-secondary-rgb: 112,117,121;
+    --space-big: 24px;
+    --space-medium: 18px;
+    --space-normal: 16px;
+    --space-small: 8px
 
 }
 .dark {
@@ -17,5 +21,4 @@
     --color-background-secondary: rgb(244,244,245);
     --color-border-item: rgb(218,220,224);
     --color-border-input: rgb(218,220,224);
-
 }

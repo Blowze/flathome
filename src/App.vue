@@ -4,7 +4,7 @@
     <router-link to="/about">About</router-link>
   </nav> -->
     <router-view v-slot="{ Component }">
-        <transition name="scale" mode="out-in">
+        <transition name="animation-scale" mode="animation-out-in">
             <component :is="Component" />
         </transition>
     </router-view>
@@ -19,5 +19,15 @@
     font-family: "Montserrat", sans-serif;
     background: var(--tg-theme-bg-color);
     min-height: 100vh;
+}
+.page {
+    &__container {
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: var(--space-small) var(--space-normal);
+        text-align: center;
+        margin: auto;
+    }
 }
 </style>
