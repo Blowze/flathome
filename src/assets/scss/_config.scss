@@ -28,3 +28,7 @@
     --color-border-item: rgb(218,220,224);
     --color-border-input: rgb(218,220,224);
 }
+
+@function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+  }

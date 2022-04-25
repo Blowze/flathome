@@ -3,13 +3,49 @@
         <FilterRegion :image="citySelect.image" :name="citySelect.name" />
         <div class="FilterBody">
             <div class="scrollable scrollable-y">
-                <div class="FilterBody__Item">
+                <div class="FilterBody__Item FilterBody__ItemIsList">
+                    <div class="Developer">
+                        <div class="Developer__Avatar">
+                            <img
+                                src="https://avatars.mds.yandex.net/get-zen_doc/4387796/pub_602647ddb1a0bb52b47194b2_6026480d331cb763522019d5/scale_1200"
+                                alt=""
+                            />
+                        </div>
+                        <div class="Developer__Info">
+                            <div class="Developer__Name">ПИК-Застройщик</div>
+                            <div class="Developer__Status">Рекомендуемый</div>
+                        </div>
+                    </div>
+                    <h4 class="FilterBody__Title">Застройщик</h4>
+
+                    <CheckboxDefault text="Застройщик Премиум" />
+                    <CheckboxDefault text="Застройщик Премиум" />
+                    <CheckboxDefault text="Застройщик Премиум" />
+                    <Ripple>
+                        <div class="ItemLink">
+                            <div class="icon-eye"></div>
+                            <div class="ItemLink__Title">
+                                Показать полный список
+                            </div>
+                        </div>
+                    </Ripple>
+                </div>
+                <div class="TextHint">в базе 72 застройщика</div>
+                <div class="FilterBody__Item FilterBody__ItemIsList">
                     <h4 class="FilterBody__Title">Регион</h4>
                     <CheckboxDefault
                         v-for="item in region"
                         :key="'region-' + item"
                         :text="item.name"
                     />
+                    <Ripple>
+                        <div class="ItemLink">
+                            <div class="icon-eye"></div>
+                            <div class="ItemLink__Title">
+                                Показать полный список
+                            </div>
+                        </div>
+                    </Ripple>
                     <!-- <button class="FilterBody__ButtonAdd">Показать еще</button> -->
                 </div>
 
@@ -63,24 +99,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="FilterBody__Item">
-                    <h4 class="FilterBody__Title">Застройщик</h4>
-                    <div class="Developer">
-                        <div class="Developer__Avatar">
-                            <img
-                                src="https://avatars.mds.yandex.net/get-zen_doc/4387796/pub_602647ddb1a0bb52b47194b2_6026480d331cb763522019d5/scale_1200"
-                                alt=""
-                            />
-                        </div>
-                        <div class="Developer__Info">
-                            <div class="Developer__Name">ПИК-Застройщик</div>
-                            <div class="Developer__Status">Рекомендуемый</div>
-                        </div>
-                    </div>
-                    <CheckboxDefault text="Застройщик Премиум" />
-                    <CheckboxDefault text="Застройщик Премиум" />
-                    <CheckboxDefault text="Застройщик Премиум" />
-                </div>
             </div>
         </div>
     </div>
@@ -89,6 +107,7 @@
 import Slider from "@vueform/slider";
 import FilterRegion from "../components/FilterRegion.vue";
 import CheckboxDefault from "../components/Checkbox.vue";
+import Ripple from "../components/Ripple.vue";
 
 export default {
     name: "HomeView",
@@ -96,6 +115,7 @@ export default {
         FilterRegion,
         CheckboxDefault,
         Slider,
+        Ripple,
     },
     data() {
         return {
@@ -202,6 +222,33 @@ export default {
 </script>
 <style src="@vueform/slider/themes/default.css"></style>
 <style lang="scss" >
+.TextHint {
+    font-size: 14px;
+    color: var(--tg-theme-hint-color);
+    padding-left: var(--space-normal);
+    margin-bottom: var(--space-normal);
+}
+.ItemLink {
+    padding: 11px 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    color: var(--tg-theme-text-color);
+    border-top: 1px solid var(--color-border-item);
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: var(--tg-theme-button-color);
+    text-align: center;
+    height: 44px;
+    [class^="icon-"] {
+        position: absolute;
+        font-size: 18px;
+        left: 32px;
+    }
+    &__Title {
+        width: 100%;
+    }
+}
 .PageFilter {
     background: var(--color-background-secondary);
     flex-direction: column;
@@ -224,11 +271,16 @@ export default {
     &__Item {
         background: var(--tg-theme-bg-color);
         margin-bottom: 12px;
-        padding-left: var(--space-normal);
-        padding-right: var(--space-normal);
+
         padding-top: var(--space-small);
         padding-bottom: var(--space-small);
         box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+    &__ItemIsList {
+        padding-bottom: 0;
     }
     &__Title {
         padding-top: var(--space-small);
@@ -236,22 +288,16 @@ export default {
         color: var(--tg-theme-button-color);
         margin: 0;
         line-height: 24px;
+        padding-left: var(--space-normal);
+        padding-right: var(--space-normal);
     }
-    // &__ButtonAdd {
-    //     background: transparent;
-    //     color: var(--tg-theme-link-color);
-    //     border: none;
-    //     margin-bottom: 16px;
-    //     margin-top: 8px;
-    //     display: block;
-    //     width: 100%;
-    //     text-align: left;
-    //     font-size: 14px;
-    // }
 }
 .Slider {
     margin-top: var(--space-normal);
     margin-bottom: var(--space-normal);
+    padding-left: var(--space-normal);
+    padding-right: var(--space-normal);
+
     &__Footer {
         display: flex;
         justify-content: space-between;
@@ -327,7 +373,6 @@ export default {
         border-radius: 10px;
         pointer-events: none;
         z-index: 2;
-        transition: opacity 0.2s;
     }
 }
 
@@ -335,35 +380,14 @@ export default {
     display: flex;
     margin-top: 16px;
     margin-bottom: 16px;
+    padding-left: var(--space-normal);
+    padding-right: var(--space-normal);
 }
-.scrollable {
-    width: 100%;
-    height: 100%;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    max-height: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    -webkit-overflow-scrolling: touch;
-}
-.scrollable.scrollable-y {
-    overflow-y: auto;
-    overflow-y: overlay;
-    scrollbar-width: thin;
-    -ms-overflow-style: none;
-    transform: translateZ(0);
-}
+
 .Developer {
     height: 240px;
     position: relative;
-    margin-left: -16px;
-    margin-right: -16px;
-        margin-bottom: 8px;
-
-margin-top: 8px;
+    margin-bottom: 8px;
     &__Avatar {
         position: relative;
         height: 100%;
@@ -418,41 +442,6 @@ margin-top: 8px;
         display: flex;
         flex-wrap: nowrap;
         object-fit: cover;
-    }
-}
-@keyframes moveLight {
-    from {
-        transform: translateX(-130%) skewX(-45deg);
-    }
-    10% {
-        transform: translateX(-130%) skewX(-45deg);
-    }
-    20% {
-        transform: translateX(-130%) skewX(-45deg);
-    }
-    30% {
-        transform: translateX(-130%) skewX(-45deg);
-    }
-    40% {
-        transform: translateX(-130%) skewX(-45deg);
-    }
-    50% {
-        transform: translateX(130%) skewX(-45deg);
-    }
-    60% {
-        transform: translateX(130%) skewX(-45deg);
-    }
-    70% {
-        transform: translateX(130%) skewX(-45deg);
-    }
-    80% {
-        transform: translateX(130%) skewX(-45deg);
-    }
-    90% {
-        transform: translateX(130%) skewX(-45deg);
-    }
-    100% {
-        transform: translateX(130%) skewX(-45deg);
     }
 }
 </style>

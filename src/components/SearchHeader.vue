@@ -42,6 +42,7 @@ export default {
         display: flex;
         align-items: center;
         width: 100%;
+        position: relative;
     }
     &__BackButton {
         margin-right: var(--space-small);

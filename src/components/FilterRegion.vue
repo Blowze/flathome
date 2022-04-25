@@ -1,23 +1,25 @@
 <template>
     <div class="FilterRegion">
-        <div class="FilterRegion__City">
-            <div class="FilterRegion__Container">
-                <div class="FilterRegion__Item">
-                    <div class="FilterRegion__Avatar">
-                        <img :src="image" />
-                    </div>
-                    <div class="FilterRegion__Info">
-                        <!-- <div class="FilterRegion__Status">Ваш город:</div> -->
-                        <div class="FilterRegion__Title">
-                            {{ name }}
+        <Ripple>
+            <div class="FilterRegion__City">
+                <div class="FilterRegion__Container">
+                    <div class="FilterRegion__Item">
+                        <div class="FilterRegion__Avatar">
+                            <img :src="image" />
+                        </div>
+                        <div class="FilterRegion__Info">
+                            <!-- <div class="FilterRegion__Status">Ваш город:</div> -->
+                            <div class="FilterRegion__Title">
+                                {{ name }}
+                            </div>
                         </div>
                     </div>
+                    <button class="FilterRegion__Icon">
+                        <span class="icon-cog"></span>
+                    </button>
                 </div>
-                <button class="FilterRegion__Icon">
-                    <span class="icon-cog"></span>
-                </button>
             </div>
-        </div>
+        </Ripple>
         <div class="FilterRegion__Region" @click="selectRegion">
             <div class="FilterRegion__RegionInfo">{{ region }}</div>
             <div class="FilterRegion__Icon">
@@ -28,8 +30,13 @@
 </template>
 
 <script>
+import Ripple from "./Ripple.vue";
+
 export default {
     name: "FilterRegion",
+    components: {
+        Ripple,
+    },
     props: {
         image: String,
         status: String,
@@ -104,12 +111,6 @@ export default {
         cursor: pointer;
         min-height: 40px;
         display: none;
-
-        &:hover,
-        &:focus,
-        &:active {
-            background: var(--color-background);
-        }
     }
     &__RegionInfo {
         font-weight: 500;
@@ -122,11 +123,6 @@ export default {
         padding-left: 16px;
         padding-right: 10px;
         cursor: pointer;
-        &:hover,
-        &:focus,
-        &:active {
-            background: var(--color-background);
-        }
     }
 }
 </style>

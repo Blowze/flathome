@@ -1,15 +1,24 @@
 <template>
-    <label class="Checkbox">
-        <input type="checkbox" name="peas" />
-        <div class="CheckboxMain">
-            <span class="label"> {{ text }} </span>
+    <Ripple>
+        <div class="CheckboxWrap">
+            <label class="Checkbox">
+                <input type="checkbox" name="peas" />
+                <div class="CheckboxMain">
+                    <span class="label"> {{ text }} </span>
+                </div>
+            </label>
         </div>
-    </label>
+    </Ripple>
 </template>
 
 <script>
+import Ripple from "./Ripple.vue";
+
 export default {
     name: "CheckboxDefault",
+    components: {
+        Ripple,
+    },
     props: {
         text: String,
         status: String,
@@ -30,6 +39,7 @@ export default {
     min-height: 46px;
     padding-top: 8px;
     padding-bottom: 8px;
+
     line-height: 20px;
     color: var(--tg-theme-text-color);
     cursor: pointer;
@@ -106,5 +116,9 @@ export default {
             }
         }
     }
+}
+.CheckboxWrap {
+    padding-left: var(--space-normal);
+    padding-right: var(--space-normal);
 }
 </style>
