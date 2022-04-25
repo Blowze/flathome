@@ -27,9 +27,9 @@ export default {
     position: relative;
     padding-left: 54px;
     text-align: left;
-    min-height: 56px;
-    padding-top: 11px;
-    padding-bottom: 11px;
+    min-height: 46px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     line-height: 20px;
     color: var(--tg-theme-text-color);
     cursor: pointer;

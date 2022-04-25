@@ -65,7 +65,21 @@
                 </div>
                 <div class="FilterBody__Item">
                     <h4 class="FilterBody__Title">Застройщик</h4>
-                    <CheckboxDefault text="1" />
+                    <div class="Developer">
+                        <div class="Developer__Avatar">
+                            <img
+                                src="https://avatars.mds.yandex.net/get-zen_doc/4387796/pub_602647ddb1a0bb52b47194b2_6026480d331cb763522019d5/scale_1200"
+                                alt=""
+                            />
+                        </div>
+                        <div class="Developer__Info">
+                            <div class="Developer__Name">ПИК-Застройщик</div>
+                            <div class="Developer__Status">Рекомендуемый</div>
+                        </div>
+                    </div>
+                    <CheckboxDefault text="Застройщик Премиум" />
+                    <CheckboxDefault text="Застройщик Премиум" />
+                    <CheckboxDefault text="Застройщик Премиум" />
                 </div>
             </div>
         </div>
@@ -121,9 +135,10 @@ export default {
     computed: {
         // геттер вычисляемого значения
         citySelect() {
-            return this.$store.state.cityCurrent.id
-                ? this.$store.state.cityCurrent
+            const isCityCurrent = this.$store.state.city.curent.id
+                ? this.$store.state.city.curent
                 : this.cityCurrent;
+            return isCityCurrent;
         },
         region() {
             const isCityCurrent = this.$store.state.city.curent.name
@@ -340,5 +355,104 @@ export default {
     scrollbar-width: thin;
     -ms-overflow-style: none;
     transform: translateZ(0);
+}
+.Developer {
+    height: 240px;
+    position: relative;
+    margin-left: -16px;
+    margin-right: -16px;
+        margin-bottom: 8px;
+
+margin-top: 8px;
+    &__Avatar {
+        position: relative;
+        height: 100%;
+        &:before {
+            content: ""; /* отображает псевдоэлемент */
+            position: absolute; /* абсолютное позиционирование */
+            top: 0; /* верхняя координата */
+            left: 0; /* левая координата */
+            width: 100%; /* относительная ширина */
+            height: 100%; /* высота как у оригинала */
+            background-color: rgba(
+                255,
+                255,
+                255,
+                0.1
+            ); /* белый цвет с полупрозрачностью */
+            transform: translateX(-130%) skewX(-45deg);
+            animation: moveLight 5s infinite linear;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 140px;
+            background: linear-gradient(
+                360deg,
+                rgb(0 0 0 / 57%) 8.98%,
+                rgba(0, 0, 0, 0) 100%
+            );
+        }
+    }
+    &__Info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px;
+    }
+    &__Name {
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+    &__Status {
+        color: #0ac630;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        object-fit: cover;
+    }
+}
+@keyframes moveLight {
+    from {
+        transform: translateX(-130%) skewX(-45deg);
+    }
+    10% {
+        transform: translateX(-130%) skewX(-45deg);
+    }
+    20% {
+        transform: translateX(-130%) skewX(-45deg);
+    }
+    30% {
+        transform: translateX(-130%) skewX(-45deg);
+    }
+    40% {
+        transform: translateX(-130%) skewX(-45deg);
+    }
+    50% {
+        transform: translateX(130%) skewX(-45deg);
+    }
+    60% {
+        transform: translateX(130%) skewX(-45deg);
+    }
+    70% {
+        transform: translateX(130%) skewX(-45deg);
+    }
+    80% {
+        transform: translateX(130%) skewX(-45deg);
+    }
+    90% {
+        transform: translateX(130%) skewX(-45deg);
+    }
+    100% {
+        transform: translateX(130%) skewX(-45deg);
+    }
 }
 </style>
