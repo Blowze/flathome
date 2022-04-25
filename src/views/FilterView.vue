@@ -1,6 +1,10 @@
 <template>
     <div class="page PageFilter">
-        <FilterRegion :image="citySelect.image" :name="citySelect.name" />
+        <FilterRegion
+            :image="citySelect.image"
+            :name="citySelect.name"
+            @click="buttonBack"
+        />
         <div class="FilterBody">
             <div class="scrollable scrollable-y">
                 <div class="FilterBody__Item FilterBody__ItemIsList">
@@ -22,7 +26,7 @@
                     <CheckboxDefault text="Застройщик Премиум" />
                     <CheckboxDefault text="Застройщик Премиум" />
                     <Ripple>
-                        <div class="ItemLink">
+                        <div class="ItemLink" @click="selectRegion">
                             <div class="icon-eye"></div>
                             <div class="ItemLink__Title">
                                 Показать полный список
@@ -39,7 +43,7 @@
                         :text="item.name"
                     />
                     <Ripple>
-                        <div class="ItemLink">
+                        <div class="ItemLink" @click="selectRegion">
                             <div class="icon-eye"></div>
                             <div class="ItemLink__Title">
                                 Показать полный список
@@ -201,6 +205,7 @@ export default {
                 });
             }
         },
+
         buttonBack() {
             this.$router.push("/");
             if (this.$store.state.cityCurrent) {

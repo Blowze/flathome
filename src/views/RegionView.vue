@@ -4,25 +4,21 @@
             <SearchHeader
                 :back-button="true"
                 placeholder="Поиск региона"
-                @keyup="submitSearchCity"
+                @keyup="submitSearch"
             />
-            <div class="SearchBody">
-                <template v-if="region.length === 0">
+        </div>
+        <div class="SearchBody">
+            <template v-if="region.length === 0">
+                <div class="page__container">
                     <div class="SearchBody__noFound">Ничего не найдено</div>
-                </template>
-                <div
-                    v-for="item in region"
-                    :key="'region-' + item"
-                    class="SearchBody__SearchCards"
-                >
-                    <SearchCard
-                        :name="item.name"
-                        :active="isActive(item.id)"
-                        @touchstart="setActiveRegion(item)"
-                        @click="setActiveRegion(item)"
-                        @mousedown="setActiveRegion(item)"
-                    />
                 </div>
+            </template>
+            <div
+                v-for="item in region"
+                :key="'region-' + item"
+                class="SearchBody__SearchCards"
+            >
+                <CheckboxDefault :text="item.name" />
             </div>
         </div>
     </div>
@@ -30,13 +26,13 @@
 
 <script>
 import SearchHeader from "../components/SearchHeader.vue";
-import SearchCard from "../components/SearchCard.vue";
+import CheckboxDefault from "../components/Checkbox.vue";
 
 export default {
     name: "HomeView",
     components: {
         SearchHeader,
-        SearchCard,
+        CheckboxDefault,
     },
     data() {
         return {

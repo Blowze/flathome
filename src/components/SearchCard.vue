@@ -32,6 +32,10 @@ export default {
 </script>
 
 <style scoped lang="scss" >
+.Ripple {
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
 .SearchCard {
     padding: var(--space-small);
     overflow: hidden;
