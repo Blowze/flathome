@@ -92,6 +92,9 @@ export default {
 </script>
 <style lang="scss" >
 .SearchBody {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
     &__noFound {
         color: var(--tg-theme-hint-color);
     }

@@ -10,6 +10,7 @@
   "dependencies": {
     "@jambonn/vue-lazyload": "^1.0.9",
     "@vueform/slider": "^2.0.9",
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "eslint-plugin-prettier-vue": "^3.1.0",
     "tb-skeleton": "^0.3.6",

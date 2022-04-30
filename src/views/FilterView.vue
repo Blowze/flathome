@@ -7,6 +7,8 @@
         />
         <div class="FilterBody">
             <div class="scrollable scrollable-y">
+                <button @click="sendMessadge">re</button>
+
                 <div class="FilterBody__Item FilterBody__ItemIsList">
                     <div class="Developer">
                         <div class="Developer__Avatar">
@@ -109,6 +111,7 @@
 </template>
 <script>
 import Slider from "@vueform/slider";
+import axios from "axios";
 import FilterRegion from "../components/FilterRegion.vue";
 import CheckboxDefault from "../components/Checkbox.vue";
 import Ripple from "../components/Ripple.vue";
@@ -157,7 +160,6 @@ export default {
         };
     },
     computed: {
-        // геттер вычисляемого значения
         citySelect() {
             const isCityCurrent = this.$store.state.city.curent.id
                 ? this.$store.state.city.curent
@@ -189,6 +191,19 @@ export default {
         });
     },
     methods: {
+        sendMessadge() {
+            axios({
+                method: "get", // Or GET
+                url: "https://api.telegram.org/bot5214296228:AAH2trAUtiJk43-RDu41eU6qmZmxWCGujuU/SendMessage",
+                headers: { "Content-Type": "application/json;charset=UTF-8" },
+                data: {
+                    chat_id: 5214296228,
+                    text: "Hello",
+                },
+            }).then((response) => {
+                console.log(response);
+            });
+        },
         selectRegion() {
             this.$router.push("/region");
             if (this.$store.state.regionCurrent) {

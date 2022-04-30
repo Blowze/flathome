@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/CityView.vue";
 import RegionView from "../views/RegionView.vue";
 import FilterView from "../views/FilterView.vue";
+import ListView from "../views/ListView.vue";
 
 const routes = [
     {
@@ -18,6 +19,11 @@ const routes = [
         path: "/region",
         name: "region",
         component: RegionView,
+    },
+    {
+        path: "/list",
+        name: "list",
+        component: ListView,
     },
 ];
 
