@@ -196,12 +196,13 @@ export default {
                 method: "post", // Or GET
                 url: "https://api.telegram.org/bot5214296228:AAH2trAUtiJk43-RDu41eU6qmZmxWCGujuU/SendMessage",
                 data: {
-                    chat_id: 5214296228,
-                    text: "Hello",
+                    chat_id: window.Telegram.WebApp.initDataUnsafe.user.id,
+                    text: "🚀 Отлично, поиск запущен. ",
                 },
             }).then((response) => {
                 console.log(response);
             });
+            window.Telegram.WebApp.close;
         },
         selectRegion() {
             this.$router.push("/region");
