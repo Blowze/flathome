@@ -193,9 +193,8 @@ export default {
     methods: {
         sendMessadge() {
             axios({
-                method: "get", // Or GET
+                method: "post", // Or GET
                 url: "https://api.telegram.org/bot5214296228:AAH2trAUtiJk43-RDu41eU6qmZmxWCGujuU/SendMessage",
-                headers: { "Content-Type": "application/json;charset=UTF-8" },
                 data: {
                     chat_id: 5214296228,
                     text: "Hello",
