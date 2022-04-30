@@ -7,8 +7,6 @@
         />
         <div class="FilterBody">
             <div class="scrollable scrollable-y">
-                <button @click="sendMessadge">re</button>
-
                 <div class="FilterBody__Item FilterBody__ItemIsList">
                     <div class="Developer">
                         <div class="Developer__Avatar">
