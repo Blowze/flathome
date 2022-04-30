@@ -183,7 +183,7 @@ export default {
     },
 
     mounted() {
-        window.Telegram.WebApp.onEvent("mainButtonClicked", this.routerFilter);
+        window.Telegram.WebApp.onEvent("mainButtonClicked", this.sendMessadge);
         window.Telegram.WebApp.MainButton.setParams({
             text: "Поиск",
             is_active: true,
@@ -198,9 +198,9 @@ export default {
                 data: {
                     chat_id: window.Telegram.WebApp.initDataUnsafe.user.id,
                     text: "🚀 Отлично, поиск запущен. ",
+                    disable_notification: true,
                 },
-            }).then((response) => {
-                console.log(response);
+            }).then(() => {
                 window.Telegram.WebApp.close();
             });
         },
