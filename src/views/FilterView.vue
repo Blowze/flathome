@@ -201,8 +201,9 @@ export default {
                 },
             }).then((response) => {
                 console.log(response);
+                // eslint-disable-next-line no-undef
+                Telegram.WebApp.close;
             });
-            window.Telegram.WebApp.close;
         },
         selectRegion() {
             this.$router.push("/region");
