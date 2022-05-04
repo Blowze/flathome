@@ -114,7 +114,6 @@ import axios from "axios";
 import FilterRegion from "../components/FilterRegion.vue";
 import CheckboxDefault from "../components/Checkbox.vue";
 import Ripple from "../components/Ripple.vue";
-import configureMainButton from "../utils/configureMainButton";
 
 export default {
     name: "HomeView",
@@ -180,14 +179,6 @@ export default {
             }
             return isCityCurrent.region.slice(1);
         },
-    },
-
-    mounted() {
-        configureMainButton({
-            text: "Поиск",
-            isVisible: true,
-            onclick: this.sendMessadge,
-        });
     },
     methods: {
         sendMessadge() {

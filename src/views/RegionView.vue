@@ -27,7 +27,6 @@
 <script>
 import SearchHeader from "../components/SearchHeader.vue";
 import CheckboxDefault from "../components/Checkbox.vue";
-import configureMainButton from "../utils/configureMainButton";
 
 export default {
     name: "HomeView",
@@ -87,9 +86,6 @@ export default {
     },
 
     methods: {
-        backButton() {
-            this.$router.push("/filter");
-        },
         submitSearch(e) {
             this.searchInput = e.target.value;
         },
@@ -98,12 +94,6 @@ export default {
         },
         setActiveRegion(item) {
             this.$store.commit("city/SET_SELECT_REGION", item);
-            configureMainButton({
-                text: "Выбрать регион",
-                onclick:  this.backButton,
-                isVisible: true,
-            });
-
         },
     },
 };

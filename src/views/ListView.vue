@@ -72,11 +72,6 @@ export default {
     methods: {
         buttonBack() {
             this.$router.push("/filter");
-            window.Telegram.WebApp.MainButton.setParams({
-                text: "Поиск",
-                is_active: true,
-                is_visible: true,
-            });
         },
     },
 };

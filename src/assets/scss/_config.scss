@@ -11,6 +11,8 @@
     --slider-handle-width: 15px;
     --slider-handle-height: 15px;
     --slider-handle-shadow: none;
+    --ripple-duration: .45s;
+    --ripple-end-duration: .3s;
 }
 .dark {
     --color-background: rgb(44,44,44);
@@ -28,7 +30,3 @@
     --color-border-item: rgb(218,220,224);
     --color-border-input: rgb(218,220,224);
 }
-
-@function hexToRGB($hex) {
-    @return red($hex), green($hex), blue($hex);
-  }

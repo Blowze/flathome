@@ -45,22 +45,3 @@
         transform: translateX(130%) skewX(-45deg);
     }
 }
-.animation-ripple {
-    animation: ink 0.6s;
-    border-radius: 100%;
-    background: var(--color-background);
-    height: 12px;
-    position: absolute;
-    width: 12px;
-}
-
-@keyframes ink {
-    0% {
-        opacity: 0.2;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(80);
-    }
-}

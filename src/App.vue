@@ -16,6 +16,7 @@ export default {
     mounted() {
         this.$nextTick(() => {
             Telegram.WebApp.ready();
+            Telegram.WebApp.MainButton.onClick(Cafe.mainBtnClicked);
         });
     },
 };

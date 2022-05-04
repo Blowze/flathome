@@ -32,7 +32,6 @@
 <script>
 import SearchHeader from "../components/SearchHeader.vue";
 import SearchCard from "../components/SearchCard.vue";
-import configureMainButton from "../utils/configureMainButton";
 
 export default {
     name: "HomeView",
@@ -58,30 +57,17 @@ export default {
             return this.$store.state.city.items;
         },
     },
-    mounted() {
-        Telegram.WebApp.MainButton.setParams({
-            is_visible: false,
-        }).onClick(null);
-    },
+
     methods: {
         submitSearchCity(e) {
             this.searchInput = e.target.value;
         },
-        routerFilter() {
-            this.$router.push("/filter");
-        },
-
         isActive(id) {
             return this.$store.state.city.curent.id === id;
         },
         setActiveCity(item) {
             this.$store.commit("city/SET_SELECT", item);
             this.$store.commit("city/SET_SELECT_REGION", {});
-            configureMainButton({
-                text: "Выбрать город",
-                onclick: this.routerFilter,
-                isVisible: true,
-            });
         },
     },
 };
