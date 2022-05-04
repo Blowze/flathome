@@ -4,7 +4,7 @@ function configureMainButton({
     color,
     textColor = "#ffffff",
     onclick,
-    isVisible,
+    isVisible = false,
 }) {
     Telegram.WebApp.MainButton.text = text.toUpperCase();
     Telegram.WebApp.MainButton.color = color;
