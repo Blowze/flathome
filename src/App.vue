@@ -10,12 +10,13 @@
     </router-view>
 </template>
 <script>
+/* eslint-disable no-undef */
 export default {
     name: "HomeView",
     mounted() {
         this.$nextTick(() => {
-            // eslint-disable-next-line no-undef
             Telegram.WebApp.ready();
+            Telegram.WebApp.MainButton.show();
         });
     },
 };
