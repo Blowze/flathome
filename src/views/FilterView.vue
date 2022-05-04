@@ -7,6 +7,7 @@
         />
         <div class="FilterBody">
             <div class="scrollable scrollable-y">
+                <button @click="sendMessadge">red</button>
                 <div class="FilterBody__Item FilterBody__ItemIsList">
                     <div class="Developer">
                         <div class="Developer__Avatar">
@@ -195,11 +196,20 @@ export default {
                 url: "https://api.telegram.org/bot5214296228:AAH2trAUtiJk43-RDu41eU6qmZmxWCGujuU/SendMessage",
                 data: {
                     chat_id: window.Telegram.WebApp.initDataUnsafe.user.id,
+                    text: "/search ",
+                    disable_notification: true,
+                },
+            }).then((responsive) => {
+                window.Telegram.WebApp.close();
+            });
+            axios({
+                method: "post", // Or GET
+                url: "https://api.telegram.org/bot5214296228:AAH2trAUtiJk43-RDu41eU6qmZmxWCGujuU/SendMessage",
+                data: {
+                    chat_id: window.Telegram.WebApp.initDataUnsafe.user.id,
                     text: "🚀 Отлично, поиск запущен. ",
                     disable_notification: true,
                 },
-            }).then(() => {
-                window.Telegram.WebApp.close();
             });
         },
         selectRegion() {

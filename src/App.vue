@@ -9,7 +9,17 @@
         </transition>
     </router-view>
 </template>
-
+<script>
+export default {
+    name: "HomeView",
+    mounted() {
+        this.$nextTick(() => {
+            // eslint-disable-next-line no-undef
+            Telegram.WebApp.ready();
+        });
+    },
+};
+</script>
 <style  lang="scss">
 @import "assets/scss/reset";
 @import "~assets/scss/config";
