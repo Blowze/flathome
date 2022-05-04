@@ -114,6 +114,7 @@ import axios from "axios";
 import FilterRegion from "../components/FilterRegion.vue";
 import CheckboxDefault from "../components/Checkbox.vue";
 import Ripple from "../components/Ripple.vue";
+import configureMainButton from "../utils/configureMainButton";
 
 export default {
     name: "HomeView",
@@ -182,11 +183,10 @@ export default {
     },
 
     mounted() {
-        window.Telegram.WebApp.onEvent("mainButtonClicked", this.sendMessadge);
-        window.Telegram.WebApp.MainButton.setParams({
+        configureMainButton({
             text: "Поиск",
-            is_active: true,
-            is_visible: true,
+            isVisible: true,
+            onclick: this.sendMessadge,
         });
     },
     methods: {
@@ -214,36 +214,10 @@ export default {
         },
         selectRegion() {
             this.$router.push("/region");
-            if (this.$store.state.regionCurrent) {
-                window.Telegram.WebApp.MainButton.setParams({
-                    text: "Выбрать регион",
-                    is_active: true,
-                    is_visible: true,
-                });
-            } else {
-                window.Telegram.WebApp.MainButton.setParams({
-                    text: "Выбрать регион",
-                    is_active: false,
-                    is_visible: false,
-                });
-            }
         },
 
         buttonBack() {
             this.$router.push("/");
-            if (this.$store.state.cityCurrent) {
-                window.Telegram.WebApp.MainButton.setParams({
-                    text: "Выбрать город",
-                    is_active: true,
-                    is_visible: true,
-                });
-            } else {
-                window.Telegram.WebApp.MainButton.setParams({
-                    text: "Выбрать город",
-                    is_active: false,
-                    is_visible: false,
-                });
-            }
         },
     },
 };

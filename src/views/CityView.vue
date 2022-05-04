@@ -58,7 +58,11 @@ export default {
             return this.$store.state.city.items;
         },
     },
-    mounted() {},
+    mounted() {
+        configureMainButton({
+            isVisible: false,
+        });
+    },
     methods: {
         submitSearchCity(e) {
             this.searchInput = e.target.value;

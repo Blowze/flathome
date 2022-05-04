@@ -27,6 +27,7 @@
 <script>
 import SearchHeader from "../components/SearchHeader.vue";
 import CheckboxDefault from "../components/Checkbox.vue";
+import configureMainButton from "../utils/configureMainButton";
 
 export default {
     name: "HomeView",
@@ -84,11 +85,10 @@ export default {
             return isCityCurrent.region;
         },
     },
-    "$route.path": function () {
-        window.Telegram.WebApp.offEvent("mainButtonClicked");
-    },
     mounted() {
-        window.Telegram.WebApp.onEvent("mainButtonClicked", this.backButton);
+        configureMainButton({
+            isVisible: false,
+        });
     },
     methods: {
         backButton() {
@@ -102,10 +102,10 @@ export default {
         },
         setActiveRegion(item) {
             this.$store.commit("city/SET_SELECT_REGION", item);
-            window.Telegram.WebApp.MainButton.setParams({
+            configureMainButton({
                 text: "Выбрать регион",
-                is_active: true,
-                is_visible: true,
+                onclick: this.backButton,
+                isVisible: true,
             });
         },
     },
