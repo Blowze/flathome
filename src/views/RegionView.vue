@@ -85,7 +85,7 @@ export default {
             return isCityCurrent.region;
         },
     },
-    mounted() {
+    created() {
         configureMainButton({
             isVisible: false,
         });

@@ -58,7 +58,7 @@ export default {
             return this.$store.state.city.items;
         },
     },
-    mounted() {
+    created() {
         configureMainButton({
             isVisible: false,
         });
