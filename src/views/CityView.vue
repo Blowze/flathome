@@ -76,7 +76,7 @@ export default {
             configureMainButton({
                 text: "Выбрать город",
                 onclick: this.routerFilter,
-                visible: true,
+                isVisible: true,
             });
         },
     },
