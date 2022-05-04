@@ -61,6 +61,7 @@ export default {
     mounted() {
         Telegram.WebApp.MainButton.setParams({
             is_visible: false,
+            onClick: null,
         });
     },
     methods: {
