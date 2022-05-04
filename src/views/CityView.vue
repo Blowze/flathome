@@ -58,9 +58,9 @@ export default {
             return this.$store.state.city.items;
         },
     },
-    created() {
-        configureMainButton({
-            isVisible: false,
+    mounted() {
+        Telegram.WebApp.MainButton.setParams({
+            is_visible: false,
         });
     },
     methods: {

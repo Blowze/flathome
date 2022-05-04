@@ -85,11 +85,7 @@ export default {
             return isCityCurrent.region;
         },
     },
-    created() {
-        configureMainButton({
-            isVisible: false,
-        });
-    },
+
     methods: {
         backButton() {
             this.$router.push("/filter");
@@ -104,9 +100,10 @@ export default {
             this.$store.commit("city/SET_SELECT_REGION", item);
             configureMainButton({
                 text: "Выбрать регион",
-                onclick: this.backButton,
+                onclick:  this.backButton,
                 isVisible: true,
             });
+
         },
     },
 };
