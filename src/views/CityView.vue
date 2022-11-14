@@ -66,6 +66,7 @@ export default {
             return this.$store.state.city.curent.id === id;
         },
         setActiveCity(item) {
+            this.$router.push("/filter");
             this.$store.commit("city/SET_SELECT", item);
             this.$store.commit("city/SET_SELECT_REGION", {});
         },
