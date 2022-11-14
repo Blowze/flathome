@@ -30,7 +30,7 @@ export default () => ({
         },
         {
             name: "Нижний Новгород",
-            image: "https://newsnn.ru/attachments/5850fe322b2c98f3e28e68bd9f9a38ee56c4b3e1/store/fill/1200/630/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad/a7ef409a429eafd92ccf7cdee2984ea77263693c0af3bebc9007cf0b5aad.jpg",
+            image: "https://nizhny800.ru/assets/store/IcUSwSnXaHun8iLopvbCXgyTxPkMqUCxp3itPYM2QLJLvVcAqNt28Gw0M6tfdMdk.png",
             count: "127 Новостроек",
             id: 2,
             region: [

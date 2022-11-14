@@ -75,7 +75,7 @@ export default {
 <style lang="scss" >
 .SearchBody {
     width: 100%;
-    max-width: 480px;
+    max-width: 560px;
     margin: 0 auto;
     &__noFound {
         color: var(--tg-theme-hint-color);

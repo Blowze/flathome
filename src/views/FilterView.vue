@@ -7,7 +7,6 @@
         />
         <div class="FilterBody">
             <div class="scrollable scrollable-y">
-                <button @click="sendMessadge">red</button>
                 <div class="FilterBody__Item FilterBody__ItemIsList">
                     <div class="Developer">
                         <div class="Developer__Avatar">
@@ -252,7 +251,7 @@ export default {
 }
 .FilterBody {
     width: 100%;
-    max-width: 480px;
+    max-width: 560px;
     margin: 0 auto;
     max-height: 100%;
     height: 100%;
