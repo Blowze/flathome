@@ -30,7 +30,7 @@ export default () => ({
         },
         {
             name: "Нижний Новгород",
-            image: "https://nizhny800.ru/assets/store/IcUSwSnXaHun8iLopvbCXgyTxPkMqUCxp3itPYM2QLJLvVcAqNt28Gw0M6tfdMdk.png",
+            image: "https://cdn.100sp.ru/pictures/143476017",
             count: "127 Новостроек",
             id: 2,
             region: [

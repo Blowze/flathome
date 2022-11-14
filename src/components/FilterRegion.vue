@@ -49,7 +49,7 @@ export default {
 
 <style scoped lang="scss" >
 .FilterRegion {
-    max-width: 480px;
+    max-width: 560px;
     width: 100%;
     margin: auto;
     background: var(--tg-theme-bg-color);

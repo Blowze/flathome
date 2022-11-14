@@ -11,7 +11,7 @@
                     <div class="Developer">
                         <div class="Developer__Avatar">
                             <img
-                                src="https://avatars.mds.yandex.net/get-zen_doc/4387796/pub_602647ddb1a0bb52b47194b2_6026480d331cb763522019d5/scale_1200"
+                                src="https://goldenfront.ru/media/article_images/gruppa_pik.jpg"
                                 alt=""
                             />
                         </div>
